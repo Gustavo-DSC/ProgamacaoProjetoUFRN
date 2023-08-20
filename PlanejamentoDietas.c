@@ -118,3 +118,34 @@ void menu_avaliacao_nutri (void){
     getchar();
 }
 
+void menu_plan_alimentar(void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ================================    PLANEJAMENTO ALIMENTAR   ==================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                               1 [Cálculo das Necessidades Energéticas]                                  ||\n");
+    printf("||                               2 [Cálculo das Necessidades de Nutrientes]                                ||\n");
+    printf("||                               3 [Seleção de Alimentos]                                                  ||\n");
+    printf("||                               4 [Criação de Cardápios]                                                  ||\n");
+    printf("||                               0 [Voltar]                                                                ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                               Selecione a opção:                                                        ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    scanf("%c", &ops);
+    getchar();
+}
