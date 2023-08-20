@@ -149,3 +149,67 @@ void menu_plan_alimentar(void){
     scanf("%c", &ops);
     getchar();
 }
+
+void menu_acompanhamento (void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ===================================    ACOMPANHAMENTO    ======================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                               1 [Registro de Peso e Medidas Corporais]                                  ||\n");
+    printf("||                               2 [Avaliação da Adesão ao Plano Alimentar]                                ||\n");
+    printf("||                               3 [Ajuste do Plano Alimentar]                                             ||\n");
+    printf("||                               0 [Voltar]                                                                ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                               Selecione a opção:                                                        ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    scanf("%c", &ops);
+    getchar();
+}
+
+void menu_educacional (void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ======================================    EDUCACIONAL    ======================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                               1 [Dicas de Alimentação Saudável]                                         ||\n");
+    printf("||                               2 [Informações sobre Nutrientes]                                          ||\n");
+    printf("||                               0 [Voltar]                                                                ||\n"); 
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                               Selecione a opção:                                                        ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    scanf("%c", &ops);
+    getchar();
+}
