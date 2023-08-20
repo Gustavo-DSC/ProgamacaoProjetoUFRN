@@ -13,10 +13,23 @@
 #include <stdlib.h>
 #include <locale.h>
 
+void menu_inicial(void);
+void menu_inf_usuario(void);
+void menu_avaliacao_nutri(void);
+void menu_plan_alimentar(void);
+void menu_acompanhamento(void);
+void menu_educacional(void);
+void menu_sobre(void);
 
 int main(void){
 setlocale(LC_ALL, "Portuguese");
     menu_inicial();
+    menu_inf_usuario();
+    menu_avaliacao_nutri();
+    menu_plan_alimentar();
+    menu_acompanhamento();
+    menu_educacional();
+    menu_sobre();
     return 0;
 }
 
@@ -211,5 +224,35 @@ void menu_educacional (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     scanf("%c", &ops);
+    getchar();
+}
+
+void menu_sobre (void){
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     =========================================    SOBRE    =========================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     Bem-vindo ao Sistema de Planejamento de Dietas, um projeto desenvolvido por Gustavo Douglas         ||\n");
+    printf("||     Silva Cruz como parte da disciplina DCT1206 - Programação, ministrada pelo Professor Flavius        ||\n");
+    printf("||     Gorgonio na Universidade Federal do Rio Grande do Norte, CERES - Caicó, no período 2023.2.          ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     Este programa foi criado com o objetivo de auxiliar no planejamento de dietas e é destinado         ||\n");
+    printf("||     apenas para fins de aprendizagem, não sendo comercializado. O autor não se responsabiliza por       ||\n"); 
+    printf("||     quaisquer problemas que possam ocorrer durante o uso do programa.                                   ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     getchar();
 }
