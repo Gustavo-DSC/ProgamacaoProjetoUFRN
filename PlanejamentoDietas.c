@@ -77,11 +77,11 @@ void menu_inf_usuario (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Dados Pessoais]                                                        ||\n");
-    printf("||                               2 [Medidas Corporais]                                                     ||\n");
-    printf("||                               3 [Atividade Física]                                                      ||\n");
-    printf("||                               4 [Preferências Alimentares]                                              ||\n");
-    printf("||                               5 [Restrições Alimentares]                                                ||\n");
+    printf("||                               2 [Preferências Alimentares]                                              ||\n");    
+    printf("||                               3 [Restrições Alimentares]                                                ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
@@ -91,6 +91,34 @@ void menu_inf_usuario (void){
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a opção:\n");
     scanf("%c", &ops);
+    getchar();
+}
+
+void tela_dados_pessoais (void){
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     =====================================    DADOS PESSOAIS    ====================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                   NOME:                                                                                 ||\n");
+    printf("||                   IDADE:                                                                                ||\n");
+    printf("||                   SEXO:                                                                                 ||\n");    
+    printf("||                   E-MAIL                                                                                ||\n");
+    printf("||                   PESO:                                                                                 ||\n");
+    printf("||                   ALTURA                                                                                ||\n");
+    printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA - NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA        ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                   0 [Voltar]                                                                            ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||\n");
     getchar();
 }
 
