@@ -54,13 +54,11 @@ void menu_inicial (void){
     printf("||                               4 [Acompanhamento do Usuário]                                             ||\n");
     printf("||                               5 [Informações Educacionais]                                              ||\n");
     printf("||                               0 [Sair]                                                                  ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                               Selecione a opção:                                                        ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");  
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
     scanf("%c", &ops);
     getchar();
 }
@@ -86,14 +84,12 @@ void menu_inf_usuario (void){
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               Selecione a opção:                                                        ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
     scanf("%c", &ops);
     getchar();
 }
@@ -117,9 +113,6 @@ void menu_avaliacao_nutri (void){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                               Selecione a opção:                                                        ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -127,6 +120,7 @@ void menu_avaliacao_nutri (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
     scanf("%c", &ops);
     getchar();
 }
@@ -151,14 +145,12 @@ void menu_plan_alimentar(void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               Selecione a opção:                                                        ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
     scanf("%c", &ops);
     getchar();
 }
@@ -181,16 +173,14 @@ void menu_acompanhamento (void){
     printf("||                               0 [Voltar]                                                                ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                               Selecione a opção:                                                        ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");  
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
     scanf("%c", &ops);
     getchar();
 }
@@ -213,16 +203,14 @@ void menu_educacional (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                               Selecione a opção:                                                        ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");   
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
     scanf("%c", &ops);
     getchar();
 }
@@ -245,9 +233,6 @@ void menu_sobre (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
