@@ -15,7 +15,10 @@
 
 void menu_inicial(void);
 void menu_inf_usuario(void);
+void tela_dados_pessoais(void);
+void tela_restricao_alimentar (void);
 void menu_avaliacao_nutri(void);
+void tela_imc (void);
 void menu_plan_alimentar(void);
 void menu_acompanhamento(void);
 void menu_educacional(void);
@@ -25,7 +28,10 @@ int main(void){
 setlocale(LC_ALL, "Portuguese");
     menu_inicial();
     menu_inf_usuario();
+    tela_dados_pessoais();
+    tela_restricao_alimentar();
     menu_avaliacao_nutri();
+    tela_imc();
     menu_plan_alimentar();
     menu_acompanhamento();
     menu_educacional();
