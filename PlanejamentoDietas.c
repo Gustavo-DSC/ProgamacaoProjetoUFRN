@@ -77,9 +77,9 @@ void menu_inf_usuario (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Dados Pessoais]                                                        ||\n");
-    printf("||                               2 [Preferências Alimentares]                                              ||\n");    
-    printf("||                               3 [Restrições Alimentares]                                                ||\n");
+    printf("||                               2 [Restrições Alimentares]                                                ||\n");    
     printf("||                               0 [Voltar]                                                                ||\n");
+    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -173,6 +173,35 @@ void menu_avaliacao_nutri (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
+    scanf("%c", &ops);
+    getchar();
+}
+void tela_imc (void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ========================================   IMC USÚARIO  =======================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||         tabela de valores de IMC          | INFORMAÇÔES                                                 ||\n");
+    printf("||     IMC               CLASSIFICAÇÂO       | O IMC (Índice de Massa Corporal). É uma técnica utilizada   ||\n");
+    printf("||     < 16,00           Magreza grau III    | para verificar o estado nutricional e observar se a pessoa  ||\n");
+    printf("||     16,00 - 16,99     Magreza grau II     | está dentro dos padrões de normalidade com relação ao seu   ||\n");
+    printf("||     17,00 - 18,49     Magreza grau I      | peso e estatura                                             ||\n");
+    printf("||     18,50 - 24,99     Peso normal         |                                                             ||\n");
+    printf("||     25,00 - 29,99     Sobrepeso           | SEU IMC :                                                   ||\n");    
+    printf("||     30,00 - 34,99     Obesidade grau I    |                                                             ||\n");
+    printf("||     35,00 - 39,99     Obesidade grau II   |                                                             ||\n");
+    printf("||     ? 40,00           Obesidade grau III  |                                                             ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||     0 -[voltar]                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a opção:\n");
