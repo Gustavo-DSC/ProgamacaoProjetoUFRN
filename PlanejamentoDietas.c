@@ -122,6 +122,33 @@ void tela_dados_pessoais (void){
     getchar();
 }
 
+void tela_restricao_alimentar (void){
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     =================================    RESTRIÇÔES ALIMENTARES    ================================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                 OPÇÔES RÁPIDAS                                                                          ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                  1 - Intolerância à lactose                                                             ||\n");
+    printf("||                  2 - Alergia ao glúten                                                                  ||\n");
+    printf("||                  3 - Alergia a crustáceos                                                               ||\n");
+    printf("||                  4 - Diabetes                                                                           ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                  INFORME SUAS RESTRIÇÔES ALIMENTARES                                                    ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                 0 [Voltar]                                                                              ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||\n");
+    getchar();
+}
 
 void menu_avaliacao_nutri (void){
     char ops;
