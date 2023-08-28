@@ -19,6 +19,7 @@ void tela_dados_pessoais(void);
 void tela_restricao_alimentar (void);
 void menu_avaliacao_nutri(void);
 void tela_imc (void);
+void tela_ingestao_alimentar (void);
 void menu_plan_alimentar(void);
 void menu_acompanhamento(void);
 void menu_educacional(void);
@@ -32,6 +33,7 @@ setlocale(LC_ALL, "Portuguese");
     tela_restricao_alimentar();
     menu_avaliacao_nutri();
     tela_imc();
+    tela_ingestao_alimentar ();
     menu_plan_alimentar();
     menu_acompanhamento();
     menu_educacional();
@@ -212,6 +214,36 @@ void tela_imc (void){
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a opção:\n");
     scanf("%c", &ops);
+    getchar();
+}
+void tela_ingestao_alimentar (void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     =============================   AVALIAÇÃO DA INGESTÃO ALIMENTAR   =============================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||      INFORME SE DEIXOU DE FAZER UMA REFEIÇÃO DA DIETA                                                   ||\n");
+    printf("||          1 - café da manhã                                                                              ||\n");
+    printf("||          2 - almoço                                                                                     ||\n");
+    printf("||          3 - jantar                                                                                     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||      INFORME COMO VOCÊ ESTÁ SE SENTINDO COM A ALIMENTAÇÃO                                               ||\n");
+    printf("||          1 - bem                                                                                        |\n");    
+    printf("||          2 - normal                                                                                     ||\n");
+    printf("||          3 - ruim                                                                                       ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||      INFOEME SE ALGUM ALIMENTO ESTÁ FAZENDO MAL                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||          0 [Voltar]                                                                                     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
+    scanf("%c", &ops);
+    getchar();
     getchar();
 }
 
