@@ -1,12 +1,12 @@
-//+----------------------------------------------+//
-//| Universidade Federal do Rio Grande do Norte  |//
-//| CERES - Caicó                                |//
-//| Período da faculdade: 2023.2                 |//
-//| Disciplina: DCT1206 - Programação            |//
-//| Professor: Flavius Gorgonio                  |//
-//| Discente: Gustavo Douglas Silva Cruz         |//
-//| Projeto: Sistema de Planejamento de Dietas   |//
-//+----------------------------------------------+//
+//+-------------------------------------------------------+//
+//| Universidade Federal do Rio Grande do Norte           |//
+//| CERES - Caicó                                         |//
+//| Período da faculdade: 2023.2                          |//
+//| Disciplina: DCT1206 - Programação                     |//
+//| Professor: Flavius Gorgonio                           |//
+//| Discente: Gustavo Douglas Silva Cruz                  |//
+//| Projeto: Sistema de Planejamento de Dietas versão 0.2 |//
+//+-------------------------------------------------------+//
 
 
 #include <stdio.h>
