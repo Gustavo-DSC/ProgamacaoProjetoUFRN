@@ -259,11 +259,11 @@ void menu_plan_alimentar(void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [Cálculo das Necessidades Energéticas]                                  ||\n");
-    printf("||                               2 [Cálculo das Necessidades de Nutrientes]                                ||\n");
-    printf("||                               3 [Seleção de Alimentos]                                                  ||\n");
-    printf("||                               4 [Criação de Cardápios]                                                  ||\n");
+    printf("||                               1 [Criação de Cardápios]                                                  ||\n");
+    printf("||                               2 [Sugestões de substituições saudáveis]                                  ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
