@@ -410,6 +410,36 @@ void tela_registro_medidas (void){
     getchar();
 }
 
+void tela_adesao_plan_alimentar (void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ===========================  AVALIAÇÃO DA ADESÃO AO PLANO ALIMENTAR  ==========================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     Com que frequência você segue o plano alimentar recomendado?                                        ||\n");
+    printf("||     1- Sempre                                                                                           ||\n");
+    printf("||     2- Às vezes                                                                                         ||\n");
+    printf("||     3- Nunca                                                                                            ||\n");
+    printf("||     Você costuma pular refeições ou substituí-las por lanches não saudáveis?                            ||\n");
+    printf("||     1- Sim                                                                                              ||\n");
+    printf("||     2- Às vezes                                                                                         ||\n");    
+    printf("||     3- Não                                                                                              ||\n");
+    printf("||     Você costuma comer alimentos não recomendados pelo plano alimentar?                                 ||\n");
+    printf("||     1- Sim                                                                                              ||\n");  
+    printf("||     2- Às vezes                                                                                         ||\n");
+    printf("||     3- Não                                                                                              ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||    0 [Voltar]                                                                                           ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
+    scanf("%c", &ops);
+    getchar();
+}
+
 void menu_educacional (void){
     char ops;
     system("clear||cls");
