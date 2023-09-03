@@ -260,7 +260,7 @@ void menu_plan_alimentar(void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Criação de Cardápios]                                                  ||\n");
-    printf("||                               2 [Sugestões de substituições saudáveis]                                  ||\n");
+    printf("||                               2 [Sugestões de substituições]                                            ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -312,6 +312,42 @@ void tela_cria_cardapio(void){
     scanf("%c", &ops);
     getchar();
     
+}
+
+void tela_suges_substituicao(void){
+    char ops;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ===============================   SUSGESTÕES DE SUBSTITUIÇÕES   ===============================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     A substituição de alimentos com valor nutricional igual permite variar as refeições, mantendo       ||\n");
+    printf("||     o equilíbrio nutricional. Isso é feito substituindo um alimento por outro de valor nutricional      ||\n");
+    printf("||     semelhante. Essa estratégia é útil para evitar a monotonia alimentar e permitir que o paciente      ||\n");
+    printf("||     tenha mais autonomia na hora de fazer suas escolhas alimentares.                                    ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     Café da manhã:                                                                                      ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     Almoço:                                                                                             ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     Jantar :                                                                                            ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||    0 [Voltar]                                                                                           ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
+    scanf("%c", &ops);
+    getchar();
 }
 
 void menu_acompanhamento (void){
