@@ -11,7 +11,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <locale.h>
 
 void menu_inicial(void);
 void menu_inf_usuario(void);
@@ -30,7 +29,6 @@ void menu_educacional(void);
 void menu_sobre(void);
 
 int main(void){
-setlocale(LC_ALL, "Portuguese");
     menu_inicial();
     menu_inf_usuario();
     tela_dados_pessoais();
