@@ -1,8 +1,8 @@
 //+-------------------------------------------------------+//
 //| Universidade Federal do Rio Grande do Norte           |//
 //| CERES - Caicó                                         |//
-//| Per�odo da faculdade: 2023.2                          |//
-//| Disciplina: DCT1206 - Programa��o                     |//
+//| Período da faculdade: 2023.2                          |//
+//| Disciplina: DCT1206 - Programação                     |//
 //| Professor: Flavius Gorgonio                           |//
 //| Discente: Gustavo Douglas Silva Cruz                  |//
 //| Projeto: Sistema de Planejamento de Dietas vers�o 0.3 |//
@@ -126,17 +126,17 @@ char menu_inicial (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [Informa��es do Usu�rio]                                                ||\n");
-    printf("||                               2 [Avalia��o Nutricional]                                                 ||\n");
+    printf("||                               1 [Informações do Usuário]                                                ||\n");
+    printf("||                               2 [Avaliação Nutricional]                                                 ||\n");
     printf("||                               3 [Planejamento Alimentar]                                                ||\n");
-    printf("||                               4 [Acompanhamento do Usu�rio]                                             ||\n");
+    printf("||                               4 [Acompanhamento do Usuário]                                             ||\n");
     printf("||                               5 [Sobre]                                                                 ||\n");
     printf("||                               0 [Sair]                                                                  ||\n");
     printf("||                                                                                                         ||\n");  
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -155,7 +155,7 @@ char menu_inf_usuario (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Dados Pessoais]                                                        ||\n");
-    printf("||                               2 [Restri��es Alimentares]                                                ||\n");    
+    printf("||                               2 [Restrições Alimentares]                                                ||\n");    
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -167,7 +167,7 @@ char menu_inf_usuario (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -189,7 +189,7 @@ char tela_dados_pessoais (){
     printf("||                   E-MAIL                                                                                ||\n");
     printf("||                   PESO:                                                                                 ||\n");
     printf("||                   ALTURA                                                                                ||\n");
-    printf("||                   FREQU�NCIA DE ATIVIDADE F�SICA - NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA        ||\n");
+    printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA - NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA        ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                   0 [Voltar]                                                                            ||\n");    
@@ -209,16 +209,16 @@ char tela_restricao_alimentar (){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     =================================    RESTRI��ES ALIMENTARES    ================================     ||\n");
+    printf("||     =================================    RESTRIÇÕES ALIMENTARES    ================================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                 OP��ES R�PIDAS                                                                          ||\n");
+    printf("||                 OPÇÕES RÁPIDAS                                                                          ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                  1 - Intoler�ncia � lactose                                                             ||\n");
-    printf("||                  2 - Alergia ao gl�ten                                                                  ||\n");
-    printf("||                  3 - Alergia a crust�ceos                                                               ||\n");
+    printf("||                  1 - Intolerância à lactose                                                             ||\n");
+    printf("||                  2 - Alergia ao glúten                                                                  ||\n");
+    printf("||                  3 - Alergia a crustáceos                                                               ||\n");
     printf("||                  4 - Diabetes                                                                           ||\n");    
     printf("||                                                                                                         ||\n");
-    printf("||                  INFORME SUAS RESTRI��ES ALIMENTARES                                                    ||\n");
+    printf("||                  INFORME SUAS RESTRIÇÕES ALIMENTARES                                                    ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -239,13 +239,13 @@ char menu_avaliacao_nutri (){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ================================    AVALIA��O  NUTRICIONAL   ==================================     ||\n");
+    printf("||     ================================    AVALIAÇÃO  NUTRICIONAL   ==================================     ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [C�lculo do IMC]                                                        ||\n");
-    printf("||                               2 [Avalia��o da Ingest�o Alimentar]                                       ||\n");
+    printf("||                               1 [Cálculo do IMC]                                                        ||\n");
+    printf("||                               2 [Avaliação da Ingestão Alimentar]                                       ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
@@ -257,7 +257,7 @@ char menu_avaliacao_nutri (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -268,12 +268,12 @@ char tela_imc (){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ========================================   IMC US�ARIO  =======================================     ||\n");
+    printf("||     ========================================   IMC USÚARIO  =======================================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||         tabela de valores de IMC          | INFORMA��ES                                                 ||\n");
-    printf("||     IMC               CLASSIFICA��O       | O IMC (�ndice de Massa Corporal). � uma t�cnica utilizada   ||\n");
+    printf("||         tabela de valores de IMC          | INFORMAÇÕES                                                 ||\n");
+    printf("||     IMC               CLASSIFICAÇÃO       | O IMC (índice de Massa Corporal). É uma técnica utilizada   ||\n");
     printf("||     < 16,00           Magreza grau III    | para verificar o estado nutricional e observar se a pessoa  ||\n");
-    printf("||     16,00 - 16,99     Magreza grau II     | est� dentro dos padr�es de normalidade com rela��o ao seu   ||\n");
+    printf("||     16,00 - 16,99     Magreza grau II     | está dentro dos padrões de normalidade com relação ao seu   ||\n");
     printf("||     17,00 - 18,49     Magreza grau I      | peso e estatura                                             ||\n");
     printf("||     18,50 - 24,99     Peso normal         |                                                             ||\n");
     printf("||     25,00 - 29,99     Sobrepeso           | SEU IMC :                                                   ||\n");    
@@ -286,7 +286,7 @@ char tela_imc (){
     printf("||     0 -[voltar]                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -297,25 +297,25 @@ char tela_ingestao_alimentar (){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     =============================   AVALIA��O DA INGEST�O ALIMENTAR   =============================     ||\n");
+    printf("||     =============================   AVALIAÇÃO DA INGESTÃO ALIMENTAR   =============================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||      INFORME SE DEIXOU DE FAZER UMA REFEI��O DA DIETA                                                   ||\n");
-    printf("||          1 - caf� da manh�                                                                              ||\n");
-    printf("||          2 - almo�o                                                                                     ||\n");
+    printf("||      INFORME SE DEIXOU DE FAZER UMA REFEIÇÃO DA DIETA                                                   ||\n");
+    printf("||          1 - café da manhã                                                                              ||\n");
+    printf("||          2 - almoço                                                                                     ||\n");
     printf("||          3 - jantar                                                                                     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||      INFORME COMO VOC� EST� SE SENTINDO COM A ALIMENTA��O                                               ||\n");
+    printf("||      INFORME COMO VOCÊ ESTÁ SE SENTINDO COM A ALIMENTAÇÃO                                               ||\n");
     printf("||          1 - bem                                                                                        |\n");    
     printf("||          2 - normal                                                                                     ||\n");
     printf("||          3 - ruim                                                                                       ||\n");
     printf("||                                                                                                         ||\n");    
-    printf("||      INFOEME SE ALGUM ALIMENTO EST� FAZENDO MAL                                                         ||\n");
+    printf("||      INFOEME SE ALGUM ALIMENTO ESTÁ FAZENDO MAL                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||          0 [Voltar]                                                                                     ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -332,8 +332,8 @@ char menu_plan_alimentar(){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [Cria��o de Card�pios]                                                  ||\n");
-    printf("||                               2 [Sugest�es de substitui��es]                                            ||\n");
+    printf("||                               1 [Criação de Cardápios]                                                  ||\n");
+    printf("||                               2 [Sugestões de substituições]                                            ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -345,7 +345,7 @@ char menu_plan_alimentar(){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -357,17 +357,17 @@ char tela_cria_cardapio(){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ================================     CRIA��O DE CARD�PIOS    ==================================     ||\n");
+    printf("||     ================================     CRIAÇÃO DE CARDÁPIOS    ==================================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Este card�pio foi crido, utilizando informa��es sobre sua altura, peso, idade e n�vel de atividade  ||\n");
-    printf("||     f�sica para calcular suas necessidades cal�ricas di�rias e criar um card�pio personalizado que      ||\n");
-    printf("||     atenda �s suas necessidades nutricionais.                                                           ||\n");
+    printf("||     Este cardápio foi crido, utilizando informações sobre sua altura, peso, idade e nível de atividade  ||\n");
+    printf("||     física para calcular suas necessidades calóricas diárias e criar um cardápio personalizado que      ||\n");
+    printf("||     atenda às suas necessidades nutricionais.                                                           ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Caf� da manh�:                                                                                      ||\n");
+    printf("||     Café da manhã:                                                                                      ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Almo�o:                                                                                             ||\n");
+    printf("||     Almoço:                                                                                             ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -381,7 +381,7 @@ char tela_cria_cardapio(){
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
     
@@ -394,18 +394,18 @@ char tela_suges_substituicao(){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ===============================   SUSGEST�ES DE SUBSTITUI��ES   ===============================     ||\n");
+    printf("||     ===============================   SUSGESTÕES DE SUBSTITUIÇÕES   ===============================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     A substitui��o de alimentos com valor nutricional igual permite variar as refei��es, mantendo       ||\n");
-    printf("||     o equil�brio nutricional. Isso � feito substituindo um alimento por outro de valor nutricional      ||\n");
-    printf("||     semelhante. Essa estrat�gia � �til para evitar a monotonia alimentar e permitir que o paciente      ||\n");
+    printf("||     A substituição de alimentos com valor nutricional igual permite variar as refeições, mantendo       ||\n");
+    printf("||     o equilíbrio nutricional. Isso é feito substituindo um alimento por outro de valor nutricional      ||\n");
+    printf("||     semelhante. Essa estratégia é útil para evitar a monotonia alimentar e permitir que o paciente      ||\n");
     printf("||     tenha mais autonomia na hora de fazer suas escolhas alimentares.                                    ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Caf� da manh�:                                                                                      ||\n");
+    printf("||     Café da manhã:                                                                                      ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Almo�o:                                                                                             ||\n");
+    printf("||     Almoço:                                                                                             ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -418,7 +418,7 @@ char tela_suges_substituicao(){
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -436,7 +436,7 @@ char menu_acompanhamento (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Registro de Peso e Medidas Corporais]                                  ||\n");
-    printf("||                               2 [Avalia��o da Ades�o ao Plano Alimentar]                                ||\n");
+    printf("||                               2 [Avaliação da Adesão ao Plano Alimentar]                                ||\n");
     printf("||                               3 [Ajuste do Plano Alimentar]                                             ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");    
     printf("||                                                                                                         ||\n");
@@ -448,7 +448,7 @@ char menu_acompanhamento (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -462,10 +462,10 @@ char tela_registro_medidas (){
     printf("||                                                                                                         ||\n");
     printf("||     =========================    REGISTRO DE PESO E MEDIDAS CORPORAIS    ==========================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     O registro de peso e medidas corporais � uma ferramenta �til para acompanhar o progresso de um      ||\n");
-    printf("||     plano de dieta. Ele permite que voc� monitore as mudan�as em seu peso, altura, �ndice de massa      ||\n");
-    printf("||     corporal e outras medidas importantes ao longo do tempo. Isso pode ajud�-lo a avaliar a efic�cia    ||\n");
-    printf("||     de sua dieta e fazer ajustes conforme necess�rio.                                                   ||\n");
+    printf("||     O registro de peso e medidas corporais é uma ferramenta útil para acompanhar o progresso de um      ||\n");
+    printf("||     plano de dieta. Ele permite que vocé monitore as mudanças em seu peso, altura, índice de massa      ||\n");
+    printf("||     corporal e outras medidas importantes ao longo do tempo. Isso pode ajudá-lo a avaliar a eficêcia    ||\n");
+    printf("||     de sua dieta e fazer ajustes conforme necessário.                                                   ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     INFORME SUAS NOVAS MEDIDAS                                                                          ||\n");
     printf("||                                                                                                         ||\n");    
@@ -478,7 +478,7 @@ char tela_registro_medidas (){
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -490,25 +490,25 @@ char tela_adesao_plan_alimentar (){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ===========================  AVALIA��O DA ADES�O AO PLANO ALIMENTAR  ==========================     ||\n");
+    printf("||     ===========================  AVALIAÇÃO DA ADESÃO AO PLANO ALIMENTAR  ==========================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Com que frequ�ncia voc� segue o plano alimentar recomendado?                                        ||\n");
+    printf("||     Com que frequência você segue o plano alimentar recomendado?                                        ||\n");
     printf("||     1- Sempre                                                                                           ||\n");
-    printf("||     2- �s vezes                                                                                         ||\n");
+    printf("||     2- às vezes                                                                                         ||\n");
     printf("||     3- Nunca                                                                                            ||\n");
-    printf("||     Voc� costuma pular refei��es ou substitu�-las por lanches n�o saud�veis?                            ||\n");
+    printf("||     Você costuma pular refeições ou substituí-las por lanches não saudúveis?                            ||\n");
     printf("||     1- Sim                                                                                              ||\n");
-    printf("||     2- �s vezes                                                                                         ||\n");    
-    printf("||     3- N�o                                                                                              ||\n");
-    printf("||     Voc� costuma comer alimentos n�o recomendados pelo plano alimentar?                                 ||\n");
+    printf("||     2- às vezes                                                                                         ||\n");    
+    printf("||     3- Não                                                                                              ||\n");
+    printf("||     Você costuma comer alimentos não recomendados pelo plano alimentar?                                 ||\n");
     printf("||     1- Sim                                                                                              ||\n");  
-    printf("||     2- �s vezes                                                                                         ||\n");
-    printf("||     3- N�o                                                                                              ||\n");
+    printf("||     2- às vezes                                                                                         ||\n");
+    printf("||     3- Não                                                                                              ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a op��o:\n");
+    printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
 }
@@ -524,11 +524,11 @@ char menu_sobre (){
     printf("||     =========================================    SOBRE    =========================================     ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     Bem-vindo ao Sistema de Planejamento de Dietas, um projeto desenvolvido por Gustavo Douglas         ||\n");
-    printf("||     Silva Cruz como parte da disciplina DCT1206 - Programa��o, ministrada pelo Professor Flavius        ||\n");
-    printf("||     Gorgonio na Universidade Federal do Rio Grande do Norte, CERES - Caic�, no per�odo 2023.2.          ||\n");
+    printf("||     Silva Cruz como parte da disciplina DCT1206 - Programação, ministrada pelo Professor Flavius        ||\n");
+    printf("||     Gorgonio na Universidade Federal do Rio Grande do Norte, CERES - Caicó, no período 2023.2.          ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Este programa foi criado com o objetivo de auxiliar no planejamento de dietas e � destinado         ||\n");
-    printf("||     apenas para fins de aprendizagem, n�o sendo comercializado. O autor n�o se responsabiliza por       ||\n"); 
+    printf("||     Este programa foi criado com o objetivo de auxiliar no planejamento de dietas e é destinado         ||\n");
+    printf("||     apenas para fins de aprendizagem, não sendo comercializado. O autor não se responsabiliza por       ||\n"); 
     printf("||     quaisquer problemas que possam ocorrer durante o uso do programa.                                   ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
