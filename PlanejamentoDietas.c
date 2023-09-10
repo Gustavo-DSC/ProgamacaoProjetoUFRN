@@ -12,20 +12,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void menu_inicial(void);
-void menu_inf_usuario(void);
-void tela_dados_pessoais(void);
-void tela_restricao_alimentar (void);
-void menu_avaliacao_nutri(void);
-void tela_imc (void);
-void tela_ingestao_alimentar (void);
-void menu_plan_alimentar(void);
-void tela_cria_cardapio(void);
-void tela_suges_substituicao(void);
-void menu_acompanhamento(void);
-void tela_registro_medidas (void);
-void tela_adesao_plan_alimentar (void);
-void menu_sobre(void);
+char menu_inicial();
+char menu_inf_usuario();
+char tela_dados_pessoais();
+char tela_restricao_alimentar ();
+char menu_avaliacao_nutri();
+char tela_imc ();
+char tela_ingestao_alimentar ();
+char menu_plan_alimentar();
+char tela_cria_cardapio();
+char tela_suges_substituicao();
+char menu_acompanhamento();
+char tela_registro_medidas ();
+char tela_adesao_plan_alimentar ();
+char menu_sobre();
 
 int main(void){
     menu_inicial();
