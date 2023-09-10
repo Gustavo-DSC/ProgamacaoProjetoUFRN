@@ -64,7 +64,7 @@ void menu_inicial (void){
     printf("||                               2 [Avalia��o Nutricional]                                                 ||\n");
     printf("||                               3 [Planejamento Alimentar]                                                ||\n");
     printf("||                               4 [Acompanhamento do Usu�rio]                                             ||\n");
-    printf("||                               5 [Informa��es Educacionais]                                              ||\n");
+    printf("||                               5 [Sobre]                                                                 ||\n");
     printf("||                               0 [Sair]                                                                  ||\n");
     printf("||                                                                                                         ||\n");  
     printf("||                                                                                                         ||\n");
