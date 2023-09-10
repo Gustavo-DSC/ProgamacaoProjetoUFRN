@@ -45,7 +45,7 @@ int main(void){
     return 0;
 }
 
-void menu_inicial (void){
+char menu_inicial (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -76,7 +76,7 @@ void menu_inicial (void){
 }
 
 
-void menu_inf_usuario (void){
+char menu_inf_usuario (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -106,7 +106,7 @@ void menu_inf_usuario (void){
     return opc;
 }
 
-void tela_dados_pessoais (void){
+char tela_dados_pessoais (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -136,7 +136,7 @@ void tela_dados_pessoais (void){
     return opc;
 }
 
-void tela_restricao_alimentar (void){
+char tela_restricao_alimentar (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -166,7 +166,7 @@ void tela_restricao_alimentar (void){
     return opc;
 }
 
-void menu_avaliacao_nutri (void){
+char menu_avaliacao_nutri (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -195,7 +195,7 @@ void menu_avaliacao_nutri (void){
     scanf(" %c", &opc);
     return opc;
 }
-void tela_imc (void){
+char tela_imc (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -224,7 +224,7 @@ void tela_imc (void){
     scanf(" %c", &opc);
     return opc;
 }
-void tela_ingestao_alimentar (void){
+char tela_ingestao_alimentar (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -254,7 +254,7 @@ void tela_ingestao_alimentar (void){
     return opc;
 }
 
-void menu_plan_alimentar(void){
+char menu_plan_alimentar(){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -284,7 +284,7 @@ void menu_plan_alimentar(void){
     return opc;
 }
 
-void tela_cria_cardapio(void){
+char tela_cria_cardapio(){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -321,7 +321,7 @@ void tela_cria_cardapio(void){
     
 }
 
-void tela_suges_substituicao(void){
+char tela_suges_substituicao(){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -357,7 +357,7 @@ void tela_suges_substituicao(void){
     return opc;
 }
 
-void menu_acompanhamento (void){
+char menu_acompanhamento (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -387,7 +387,7 @@ void menu_acompanhamento (void){
     return opc;
 }
 
-void tela_registro_medidas (void){
+char tela_registro_medidas (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -417,7 +417,7 @@ void tela_registro_medidas (void){
     return opc;
 }
 
-void tela_adesao_plan_alimentar (void){
+char tela_adesao_plan_alimentar (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -448,7 +448,7 @@ void tela_adesao_plan_alimentar (void){
 }
 
 
-void menu_sobre (void){
+char menu_sobre (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
