@@ -5,7 +5,7 @@
 //| Disciplina: DCT1206 - Programação                     |//
 //| Professor: Flavius Gorgonio                           |//
 //| Discente: Gustavo Douglas Silva Cruz                  |//
-//| Projeto: Sistema de Planejamento de Dietas vers�o 0.3 |//
+//| Projeto: Sistema de Planejamento de Dietas versão 0.4 |//
 //+-------------------------------------------------------+//
 
 
@@ -149,7 +149,7 @@ char menu_inf_usuario (){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ================================    INFORMA��ES DO USU�RIO   ==================================     ||\n");
+    printf("||     ================================    INFORMAÇÕES DO USUÁRIO   ==================================     ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -535,7 +535,7 @@ char menu_sobre (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||     0 [Voltar]                                                                                          ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
