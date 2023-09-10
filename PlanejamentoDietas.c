@@ -1,6 +1,6 @@
 //+-------------------------------------------------------+//
 //| Universidade Federal do Rio Grande do Norte           |//
-//| CERES - Caic�                                         |//
+//| CERES - Caicó                                         |//
 //| Per�odo da faculdade: 2023.2                          |//
 //| Disciplina: DCT1206 - Programa��o                     |//
 //| Professor: Flavius Gorgonio                           |//
@@ -46,7 +46,7 @@ int main(void){
 }
 
 void menu_inicial (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                       _   _           _            _   _____   _                                        ||\n");
@@ -71,13 +71,13 @@ void menu_inicial (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 
 void menu_inf_usuario (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -102,11 +102,12 @@ void menu_inf_usuario (void){
     printf("||                                                                                                         ||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void tela_dados_pessoais (void){
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -131,10 +132,12 @@ void tela_dados_pessoais (void){
     printf("||                                                                                                         ||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||\n");
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void tela_restricao_alimentar (void){
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -159,11 +162,12 @@ void tela_restricao_alimentar (void){
     printf("||                                                                                                         ||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||\n");
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void menu_avaliacao_nutri (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -188,11 +192,11 @@ void menu_avaliacao_nutri (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 void tela_imc (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -217,11 +221,11 @@ void tela_imc (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 void tela_ingestao_alimentar (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -246,13 +250,12 @@ void tela_ingestao_alimentar (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void menu_plan_alimentar(void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -277,12 +280,12 @@ void menu_plan_alimentar(void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void tela_cria_cardapio(void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -313,13 +316,13 @@ void tela_cria_cardapio(void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
     
 }
 
 void tela_suges_substituicao(void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -350,12 +353,12 @@ void tela_suges_substituicao(void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void menu_acompanhamento (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -380,12 +383,12 @@ void menu_acompanhamento (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void tela_registro_medidas (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -410,12 +413,12 @@ void tela_registro_medidas (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 void tela_adesao_plan_alimentar (void){
-    char ops;
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -440,12 +443,13 @@ void tela_adesao_plan_alimentar (void){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a op��o:\n");
-    scanf("%c", &ops);
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
 
 
 void menu_sobre (void){
+    char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -469,5 +473,6 @@ void menu_sobre (void){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    getchar();
+    scanf(" %c", &opc);
+    return opc;
 }
