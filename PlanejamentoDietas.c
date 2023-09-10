@@ -28,22 +28,88 @@ char tela_adesao_plan_alimentar ();
 char menu_sobre();
 
 int main(void){
-    menu_inicial();
-    menu_inf_usuario();
-    tela_dados_pessoais();
-    tela_restricao_alimentar();
-    menu_avaliacao_nutri();
-    tela_imc();
-    tela_ingestao_alimentar ();
-    menu_plan_alimentar();
-    tela_cria_cardapio();
-    tela_suges_substituicao();
-    menu_acompanhamento();
-    tela_registro_medidas();
-    tela_adesao_plan_alimentar();
-    menu_sobre();
-    return 0;
+  char opc;
+  do {
+    opc = menu_inicial();
+    switch(opc){
+      char opc_2;
+      case '1':
+        do {
+          opc_2 = menu_inf_usuario();
+          switch(opc_2){
+            case '1':
+              tela_dados_pessoais();
+              break;
+            case '2':
+              tela_restricao_alimentar();
+              break;
+            case '0':
+              break;
+            
+              break;
+          }
+        } while (opc_2 != '0');
+        break;
+      case '2':
+        do {
+          opc_2 = menu_avaliacao_nutri();
+          switch(opc_2){
+            case '1':
+              tela_imc ();
+              break;
+            case '2':
+              tela_ingestao_alimentar ();
+              break;
+            case '0':
+              break;
+          }
+        } while (opc_2 != '0');
+        break;
+      case '3':
+        do {
+          opc_2 = menu_plan_alimentar(); 
+          switch(opc_2){
+            case '1':
+              tela_cria_cardapio();
+              break;
+            case '2':
+              tela_suges_substituicao();
+              break;
+            case '0':
+              break;
+          }
+        } while (opc_2 != '0');
+        break;
+      case '4':
+        do {
+          opc_2 = menu_acompanhamento();
+          switch(opc_2){
+            case '1':
+              tela_registro_medidas ();
+              break;
+            case '2':
+              tela_adesao_plan_alimentar ();
+              break;
+            case '0':
+              break;           
+          }
+        } while (opc_2 != '0');
+        break;
+      case '5':
+        do {
+          opc_2 = menu_sobre();
+          switch(opc_2){
+            case '0':
+              break;
+          }
+        } while (opc_2 != '0');
+        break;
+    }
+  } while (opc != '0');
+  
+  return 0;
 }
+
 
 char menu_inicial (){
     char opc;
