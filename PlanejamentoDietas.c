@@ -11,11 +11,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "usuario.h"
 
 char menu_inicial();
-char menu_inf_usuario();
-char tela_dados_pessoais();
-char tela_restricao_alimentar ();
 char menu_avaliacao_nutri();
 char tela_imc ();
 char tela_ingestao_alimentar ();
@@ -29,26 +27,11 @@ char menu_sobre();
 
 int main(void){
   char opc;
+  char opc_2;
   do {
     opc = menu_inicial();
     switch(opc){
-      char opc_2;
-      case '1':
-        do {
-          opc_2 = menu_inf_usuario();
-          switch(opc_2){
-            case '1':
-              tela_dados_pessoais();
-              break;
-            case '2':
-              tela_restricao_alimentar();
-              break;
-            case '0':
-              break;
-            
-              break;
-          }
-        } while (opc_2 != '0');
+      case '1': modulo_usuario();
         break;
       case '2':
         do {
@@ -142,95 +125,6 @@ char menu_inicial (){
 }
 
 
-char menu_inf_usuario (){
-    char opc;
-    system("clear||cls");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     ================================    INFORMAÇÕES DO USUÁRIO   ==================================     ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                               1 [Dados Pessoais]                                                        ||\n");
-    printf("||                               2 [Restrições Alimentares]                                                ||\n");    
-    printf("||                               0 [Voltar]                                                                ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
-    return opc;
-}
-
-char tela_dados_pessoais (){
-    char opc;
-    system("clear||cls");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     =====================================    DADOS PESSOAIS    ====================================     ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                   NOME:                                                                                 ||\n");
-    printf("||                   IDADE:                                                                                ||\n");
-    printf("||                   SEXO:                                                                                 ||\n");    
-    printf("||                   E-MAIL                                                                                ||\n");
-    printf("||                   PESO:                                                                                 ||\n");
-    printf("||                   ALTURA                                                                                ||\n");
-    printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA - NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA        ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                   0 [Voltar]                                                                            ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||\n");
-    scanf(" %c", &opc);
-    return opc;
-}
-
-char tela_restricao_alimentar (){
-    char opc;
-    system("clear||cls");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     =================================    RESTRIÇÕES ALIMENTARES    ================================     ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                 OPÇÕES RÁPIDAS                                                                          ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                  1 - Intolerância à lactose                                                             ||\n");
-    printf("||                  2 - Alergia ao glúten                                                                  ||\n");
-    printf("||                  3 - Alergia a crustáceos                                                               ||\n");
-    printf("||                  4 - Diabetes                                                                           ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                  INFORME SUAS RESTRIÇÕES ALIMENTARES                                                    ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                 0 [Voltar]                                                                              ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||\n");
-    scanf(" %c", &opc);
-    return opc;
-}
 
 char menu_avaliacao_nutri (){
     char opc;
