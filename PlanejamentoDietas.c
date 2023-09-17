@@ -23,7 +23,6 @@ char menu_inicial();
 
 int main(void){
   char opc;
-  char opc_2;
   do {
     opc = menu_inicial();
     switch(opc){
