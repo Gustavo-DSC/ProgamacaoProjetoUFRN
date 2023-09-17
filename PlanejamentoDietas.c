@@ -16,10 +16,10 @@
 #include "avaliacao_nutricional.h"
 #include "planejamento_alimentar.h"
 #include "acompanhamento.h"
+#include "sobre.h"
 
 
 char menu_inicial();
-char menu_sobre();
 
 int main(void){
   char opc;
@@ -35,18 +35,10 @@ int main(void){
         break;
       case '4': modulo_acompanhamento();
         break;
-      case '5':
-        do {
-          opc_2 = menu_sobre();
-          switch(opc_2){
-            case '0':
-              break;
-          }
-        } while (opc_2 != '0');
+      case '5': modulo_sobre();
         break;
     }
   } while (opc != '0');
-  
   return 0;
 }
 
@@ -82,32 +74,3 @@ char menu_inicial (){
 }
 
 
-
-char menu_sobre (){
-    char opc;
-    system("clear||cls");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     =========================================    SOBRE    =========================================     ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     Bem-vindo ao Sistema de Planejamento de Dietas, um projeto desenvolvido por Gustavo Douglas         ||\n");
-    printf("||     Silva Cruz como parte da disciplina DCT1206 - Programação, ministrada pelo Professor Flavius        ||\n");
-    printf("||     Gorgonio na Universidade Federal do Rio Grande do Norte, CERES - Caicó, no período 2023.2.          ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     Este programa foi criado com o objetivo de auxiliar no planejamento de dietas e é destinado         ||\n");
-    printf("||     apenas para fins de aprendizagem, não sendo comercializado. O autor não se responsabiliza por       ||\n"); 
-    printf("||     quaisquer problemas que possam ocorrer durante o uso do programa.                                   ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     0 [Voltar]                                                                                          ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    scanf(" %c", &opc);
-    return opc;
-}
