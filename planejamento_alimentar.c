@@ -10,7 +10,7 @@ void modulo_plan_alimentar(void) {
     do {
         opc = menu_plan_alimentar();
         switch(opc) {
-            case '1': 	tela_cardapio_peso;
+            case '1': 	tela_cardapio_peso();
                         break;
             case '2': 	tela_cardapio_nutricional();
                         break;
@@ -32,8 +32,8 @@ char menu_plan_alimentar(){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [Criação de Cardápios]                                                  ||\n");
-    printf("||                               2 [Sugestões de substituições]                                            ||\n");
+    printf("||                               1 [Sugestão de Cardápios Personalizados para Objetivos de Peso]           ||\n");
+    printf("||                               2 [Sugestão de Cardápios Baseados em Necessidades Nutricionais]           ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
