@@ -14,6 +14,10 @@ void modulo_avaliacao_nutri(void) {
                         break;
             case '2': 	tela_ingestao_alimentar();
                         break;
+            case '3':   tela_diario_registrar();
+                        break;
+            case '4':   tela_diario_visualizar();
+                        break;
         } 		
     } while (opc != '0');
 }
@@ -34,9 +38,9 @@ char menu_avaliacao_nutri (){
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Cálculo do IMC]                                                        ||\n");
     printf("||                               2 [Avaliação da Ingestão Alimentar]                                       ||\n");
+    printf("||                               3 [Registrar no diário alimentar]                                         ||\n");
+    printf("||                               4 [Visualizar diário alimentar]                                           ||\n");    
     printf("||                               0 [Voltar]                                                                ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
