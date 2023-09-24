@@ -6,4 +6,5 @@ char tela_restricao_alimentar ();
 char tela_novo_usuario();
 char tela_mudar_usuario();
 char tela_atualizar_usuario ();
+char tela_excluir_usuario ();
 void modulo_usuario();
