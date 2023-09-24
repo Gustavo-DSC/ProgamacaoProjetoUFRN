@@ -144,3 +144,34 @@ char tela_diario_registrar (){
     scanf(" %c", &opc);
     return opc;
 }
+
+
+
+char tela_diario_visualizar (){
+    char opc;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ===============================   VISUALIZAR DIÁRIO ALIMENTAR   ===============================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     	insira a data e o tipo da refeição da entrada que vocêgostaria de visualizar.                      ||\n");
+    printf("||                                                                            			                   ||\n");
+    printf("||                                                                                            	           ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                   		               ||\n");
+    printf("||                                                                                		                   ||\n");
+    printf("||                                                                                                 	       ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||          0 [Voltar]                                                                                     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    scanf(" %c", &opc);
+    return opc;
+}
