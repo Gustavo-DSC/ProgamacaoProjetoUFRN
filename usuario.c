@@ -19,6 +19,10 @@ void modulo_usuario(void) {
                         break;
             case '4':   tela_mudar_usuario();
                         break;
+            case '5':   tela_atualizar_usuario();
+                        break;
+            case '6':   tela_excluir_usuario();
+                        break; 
         } 		
     } while (opc != '0');
 }
