@@ -10,9 +10,9 @@ void modulo_plan_alimentar(void) {
     do {
         opc = menu_plan_alimentar();
         switch(opc) {
-            case '1': 	tela_cria_cardapio();
+            case '1': 	tela_cardapio_peso;
                         break;
-            case '2': 	tela_suges_substituicao();
+            case '2': 	tela_cardapio_nutricional();
                         break;
         } 		
     } while (opc != '0');
@@ -52,18 +52,15 @@ char menu_plan_alimentar(){
 
 
 
-char tela_cria_cardapio(){
+char tela_cardapio_peso(){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ================================     CRIAÇÃO DE CARDÁPIOS    ==================================     ||\n");
+    printf("||     ==========================     CARDÁPIOS PARA OBJETIVOS DE PESO    ============================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     Este cardápio foi crido, utilizando informações sobre sua altura, peso, idade e nível de atividade  ||\n");
-    printf("||     física para calcular suas necessidades calóricas diárias e criar um cardápio personalizado que      ||\n");
-    printf("||     atenda às suas necessidades nutricionais.                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     Café da manhã:                                                                                      ||\n");
     printf("||                                                                                                         ||\n");
@@ -76,10 +73,7 @@ char tela_cria_cardapio(){
     printf("||     Jantar :                                                                                            ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");   
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -91,19 +85,15 @@ char tela_cria_cardapio(){
 
 
 
-char tela_suges_substituicao(){
+char tela_cardapio_nutricional(){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     ===============================   SUSGESTÕES DE SUBSTITUIÇÕES   ===============================     ||\n");
+    printf("||     ========================   CARDÁPIOS PARA NECESSIDADES NUTRICIONAIS   =========================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     A substituição de alimentos com valor nutricional igual permite variar as refeições, mantendo       ||\n");
-    printf("||     o equilíbrio nutricional. Isso é feito substituindo um alimento por outro de valor nutricional      ||\n");
-    printf("||     semelhante. Essa estratégia é útil para evitar a monotonia alimentar e permitir que o paciente      ||\n");
-    printf("||     tenha mais autonomia na hora de fazer suas escolhas alimentares.                                    ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     Café da manhã:                                                                                      ||\n");
     printf("||                                                                                                         ||\n");
@@ -116,9 +106,7 @@ char tela_suges_substituicao(){
     printf("||     Jantar :                                                                                            ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");   
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
