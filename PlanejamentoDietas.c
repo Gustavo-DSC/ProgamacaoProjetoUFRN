@@ -57,7 +57,7 @@ char menu_inicial (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [Informações do Usuário]                                                ||\n");
+    printf("||                               1 [Usuário]                                                               ||\n");
     printf("||                               2 [Avaliação Nutricional]                                                 ||\n");
     printf("||                               3 [Planejamento Alimentar]                                                ||\n");
     printf("||                               4 [Acompanhamento do Usuário]                                             ||\n");
