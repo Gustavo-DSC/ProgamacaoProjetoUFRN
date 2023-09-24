@@ -178,3 +178,35 @@ char tela_mudar_usuario (){
     scanf(" %c", &opc);
     return opc;
 }
+
+
+
+char tela_atualizar_usuario (){
+    char opc;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||    ==============================    ATUALIZAR INFORMAÇÔES USUÁRIO    ==============================    ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                   INOME:                                                                                ||\n");
+    printf("||                   IDADE:                                                                                ||\n");
+    printf("||                   SEXO:                                                                                 ||\n");    
+    printf("||                   E-MAIL                                                                                ||\n");
+    printf("||                   PESO:                                                                                 ||\n");
+    printf("||                   ALTURA                                                                                ||\n");
+    printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:                                                       ||\n");
+    printf("||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA                                       ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                   0 [Voltar]                                                                            ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||\n");
+    scanf(" %c", &opc);
+    return opc;
+}
