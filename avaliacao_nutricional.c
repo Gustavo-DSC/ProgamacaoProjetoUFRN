@@ -113,3 +113,34 @@ char tela_ingestao_alimentar (){
     scanf(" %c", &opc);
     return opc;
 }
+
+
+
+char tela_diario_registrar (){
+    char opc;
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ===============================  REGISTRAR NO DIÁRIO ALIMENTAR   ==============================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     	Tipo de refeição:  	                                                                               ||\n");
+    printf("||        (1) Café da manhã                                                                                ||\n");
+    printf("||        (2) Lanche da manhã                                                                              ||\n");
+    printf("||        (3) Almoço                                                                                       ||\n");
+    printf("||        (4) Lanche da tarde                                                                              ||\n");
+    printf("||        (5) Jantar                                                    		                           ||\n");
+    printf("||        (6) Ceia                                                                                 	       ||\n");    
+    printf("||      Alimento/Bebida:                                                                                   ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||      Quantidade Consumida:                                                                              ||\n");    
+    printf("||                                                                                                         ||\n");
+    printf("||      Quantidade de Calorias:                                                                            ||\n");
+    printf("||                                                                                                         ||\n");    
+    printf("||          0 [Voltar]                                                                                     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    scanf(" %c", &opc);
+    return opc;
+}
