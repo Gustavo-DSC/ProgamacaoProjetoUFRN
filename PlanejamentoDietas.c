@@ -17,7 +17,7 @@
 #include "planejamento_alimentar.h"
 #include "acompanhamento.h"
 #include "sobre.h"
-
+#include "cardapios.h"
 
 char menu_inicial();
 
@@ -34,7 +34,9 @@ int main(void){
         break;
       case '4': modulo_acompanhamento();
         break;
-      case '5': modulo_sobre();
+      case '5': modulo_cardapios();
+        break;
+      case '6': modulo_sobre();
         break;
     }
   } while (opc != '0');
@@ -61,9 +63,9 @@ char menu_inicial (){
     printf("||                               2 [Avaliação Nutricional]                                                 ||\n");
     printf("||                               3 [Planejamento Alimentar]                                                ||\n");
     printf("||                               4 [Acompanhamento do Usuário]                                             ||\n");
-    printf("||                               5 [Sobre]                                                                 ||\n");
+    printf("||                               5 [Cardápios]                                                             ||\n");
+    printf("||                               6 [Sobre]                                                                 ||\n");
     printf("||                               0 [Sair]                                                                  ||\n");
-    printf("||                                                                                                         ||\n");  
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
