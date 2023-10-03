@@ -8,7 +8,7 @@
 int verificar_email(char *email) {
     char *arroba = strchr(email, '@');
     char *ponto = strrchr(email, '.');
-
+    scanf("%s", email);
     if (arroba != NULL && ponto != NULL && arroba < ponto) {
         // Verifica se há apenas um '@' no email 
         if (strchr(arroba + 1, '@') == NULL) {

@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "usuario.h"
-
+#include "utilidades.h"
 
 // funções modulo usuario
 
@@ -121,7 +121,7 @@ char tela_restricao_alimentar (){
 
 
 
-char tela_novo_usuario (){
+char tela_novo_usuario (email){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -132,12 +132,12 @@ char tela_novo_usuario (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                   INOME:                                                                                ||\n");
-    printf("||                   IDADE:                                                                                ||\n");
-    printf("||                   SEXO:                                                                                 ||\n");    
-    printf("||                   E-MAIL                                                                                ||\n");
-    printf("||                   PESO:                                                                                 ||\n");
-    printf("||                   ALTURA                                                                                ||\n");
+    printf("||                   NOME:||\n");scanf(" %c");
+    printf("||                   IDADE:||\n");scanf(" %c");
+    printf("||                   SEXO:||\n");scanf(" %c");    
+    printf("||                   E-MAIL:||\n");verificar_email(email);
+    printf("||                   PESO:||\n");scanf(" %c");
+    printf("||                   ALTURA||\n");scanf(" %c");
     printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:                                                       ||\n");
     printf("||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA                                       ||\n");
     printf("||                                                                                                         ||\n");
@@ -185,7 +185,7 @@ char tela_mudar_usuario (){
 
 
 
-char tela_atualizar_usuario (){
+char tela_atualizar_usuario (email){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -196,12 +196,12 @@ char tela_atualizar_usuario (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                   INOME:                                                                                ||\n");
-    printf("||                   IDADE:                                                                                ||\n");
-    printf("||                   SEXO:                                                                                 ||\n");    
-    printf("||                   E-MAIL                                                                                ||\n");
-    printf("||                   PESO:                                                                                 ||\n");
-    printf("||                   ALTURA                                                                                ||\n");
+    printf("||                   NOME:||\n");scanf(" %c");
+    printf("||                   IDADE:||\n");scanf(" %c");
+    printf("||                   SEXO:||\n");scanf(" %c");   
+    printf("||                   E-MAIL:||\n");verificar_email(email);
+    printf("||                   PESO:||\n");scanf(" %c");
+    printf("||                   ALTURA:||\n");scanf(" %c");
     printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:                                                       ||\n");
     printf("||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA                                       ||\n");
     printf("||                                                                                                         ||\n");

@@ -22,6 +22,7 @@
 char menu_inicial();
 
 int main(void){
+  char email[100];
   char opc;
   do {
     opc = menu_inicial();
