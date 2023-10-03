@@ -121,7 +121,7 @@ char tela_restricao_alimentar (){
 
 
 
-char tela_novo_usuario (email){
+char tela_novo_usuario (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -132,12 +132,12 @@ char tela_novo_usuario (email){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                   NOME:||\n");
-    printf("||                   IDADE:||\n");
-    printf("||                   SEXO:||\n"); 
-    printf("||                   E-MAIL:||\n");verificar_email(email);
-    printf("||                   PESO:||\n");
-    printf("||                   ALTURA||\n");
+    printf("||                   NOME:                                                                                 ||\n");
+    printf("||                   IDADE:                                                                                ||\n");
+    printf("||                   SEXO:                                                                                 ||\n"); 
+    printf("||                   E-MAIL:                                                                               ||\n");
+    printf("||                   PESO:                                                                                 ||\n");
+    printf("||                   ALTURA                                                                                ||\n");
     printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:                                                       ||\n");
     printf("||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA                                       ||\n");
     printf("||                                                                                                         ||\n");
@@ -185,7 +185,7 @@ char tela_mudar_usuario (){
 
 
 
-char tela_atualizar_usuario (email){
+char tela_atualizar_usuario (){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -196,12 +196,12 @@ char tela_atualizar_usuario (email){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                   NOME:||\n");
-    printf("||                   IDADE:||\n");
-    printf("||                   SEXO:||\n");
-    printf("||                   E-MAIL:||\n");verificar_email(email);
-    printf("||                   PESO:||\n");
-    printf("||                   ALTURA:||\n");
+    printf("||                   NOME:                                                                                 ||\n");
+    printf("||                   IDADE:                                                                                ||\n");
+    printf("||                   SEXO:                                                                                 ||\n");
+    printf("||                   E-MAIL:                                                                               ||\n");
+    printf("||                   PESO:                                                                                 ||\n");
+    printf("||                   ALTURA:                                                                               ||\n");
     printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:                                                       ||\n");
     printf("||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA                                       ||\n");
     printf("||                                                                                                         ||\n");
