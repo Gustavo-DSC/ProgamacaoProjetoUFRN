@@ -4,6 +4,11 @@
 #include "usuario.h"
 #include "utilidades.h"
 
+
+
+char nome[100];
+
+
 // funções modulo usuario
 
 void modulo_usuario(void) {
@@ -245,4 +250,15 @@ char tela_excluir_usuario (){
     printf("||\n");
     scanf(" %c", &opc);
     return opc;
+}
+
+
+
+int valida_nome(char *str) {
+    for (int i = 0; str[i]; i++) {
+        if (!isalpha(str[i]) && !isspace(str[i])) {
+            return 0;
+        }
+    }
+    return 1;
 }
