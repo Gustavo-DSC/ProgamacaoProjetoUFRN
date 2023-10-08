@@ -7,7 +7,7 @@
 
 
 char nome[100];
-
+int idade;
 
 // funções modulo usuario
 
@@ -261,4 +261,15 @@ int valida_nome(char *str) {
         }
     }
     return 1;
+}
+
+
+int valida_idade(int idade) {
+    int idade_min = 8;  
+    int idade_max = 120;  
+
+    if (idade >= idade_min && idade <= idade_max){
+      return 1;
+    }
+  return 0;
 }
