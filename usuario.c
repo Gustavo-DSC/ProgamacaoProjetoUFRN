@@ -9,6 +9,8 @@
 char nome[100];
 int idade;
 char sexo[100];
+char email[100];
+
 
 // funções modulo usuario
 
@@ -289,4 +291,41 @@ int valida_sexo(char *str) {
       return 1;
     }
   return 0;
+}
+
+
+
+int valida_email(char *email) {
+    char *arroba = strchr(email, '@');
+    char *ponto = strrchr(email, '.');
+    char *espaco = strchr(email, '\n');  
+    if (espaco){                        
+      *espaco = 0;                     
+    }
+    if (arroba != NULL && ponto != NULL && arroba < ponto) {
+        // Verifica se há apenas um '@' no email 
+        if (strchr(arroba + 1, '@') == NULL) {
+            // Verifica se tem pelo menos um caractere antes do '@'
+            if (arroba != email) {
+                // Verifica se tem pelo menos um caractere entre '@' e '.'
+                if (arroba + 1 < ponto) {
+                    // Verifica se tem pelo menos dois caracteres após o '.'
+                    if (strlen(ponto) > 2) {
+                        // Verifica se o email contém caracteres especiais
+                        for (char *c = email; *c; c++) {
+                            if ((*c < 'a' || *c > 'z') && (*c < 'A' || *c > 'Z') && (*c < '0' || *c > '9') && *c != '@' && *c != '.' && *c != '-' && *c != '_') {
+                                return 0;
+                            }
+                        }
+                        // Verifica o comprimento da parte local e do domínio
+                        if ((arroba - email <= 64) && (strlen(arroba) - strlen(ponto) <= 255)) {
+                            return 1;
+                            printf("legal\n");
+                        }
+                    }
+                }
+            }
+        }
+    }
+    return 0;
 }

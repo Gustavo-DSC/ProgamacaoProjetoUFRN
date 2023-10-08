@@ -11,3 +11,4 @@ void modulo_usuario();
 int valida_nome(char *str);
 int valida_idade(int);
 int valida_sexo(char *str);
+int valida_email(char *email);
