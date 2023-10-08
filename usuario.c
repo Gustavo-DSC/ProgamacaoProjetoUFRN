@@ -8,6 +8,7 @@
 
 char nome[100];
 int idade;
+char sexo[100];
 
 // funções modulo usuario
 
@@ -269,6 +270,22 @@ int valida_idade(int idade) {
     int idade_max = 120;  
 
     if (idade >= idade_min && idade <= idade_max){
+      return 1;
+    }
+  return 0;
+}
+
+
+int valida_sexo(char *str) {
+    char *espaco = strchr(str, '\n');  // procura por '\n' na string
+      if (espaco){                        // se '\n' foi encontrado
+        *espaco = 0;                     // substitui '\n' por '\0'
+      }
+    for(int i = 0; str[i]; i++){
+        str[i] = tolower(str[i]);
+    }
+
+    if (strcmp(str, "masculino") == 0 || strcmp(str, "feminino") == 0){
       return 1;
     }
   return 0;
