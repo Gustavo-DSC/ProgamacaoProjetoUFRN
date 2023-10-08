@@ -11,6 +11,8 @@ int idade;
 char sexo[100];
 char email[100];
 float peso;
+float altura;
+
 
 // funções modulo usuario
 
@@ -337,6 +339,17 @@ int valida_peso(float peso) {
     float peso_max = 650.0;  
 
     if (peso >= peso_min && peso <= peso_max){
+        return 1;
+    }
+    return 0;
+}
+
+
+int valida_altura(float altura) {
+    float altura_min = 0.40; 
+    float altura_max = 2.5; 
+
+    if (altura >= altura_min && altura <= altura_max){
         return 1;
     }
     return 0;
