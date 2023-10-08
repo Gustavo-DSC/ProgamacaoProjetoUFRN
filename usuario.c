@@ -10,7 +10,7 @@ char nome[100];
 int idade;
 char sexo[100];
 char email[100];
-
+float peso;
 
 // funções modulo usuario
 
@@ -326,6 +326,18 @@ int valida_email(char *email) {
                 }
             }
         }
+    }
+    return 0;
+}
+
+
+
+int valida_peso(float peso) {
+    float peso_min = 20.0;  
+    float peso_max = 650.0;  
+
+    if (peso >= peso_min && peso <= peso_max){
+        return 1;
     }
     return 0;
 }
