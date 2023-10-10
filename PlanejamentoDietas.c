@@ -5,7 +5,7 @@
 //| Disciplina: DCT1206 - Programação                     |//
 //| Professor: Flavius Gorgonio                           |//
 //| Discente: Gustavo Douglas Silva Cruz                  |//
-//| Projeto: Sistema de Planejamento de Dietas versão 0.7 |//
+//| Projeto: Sistema de Planejamento de Dietas versão 0.8 |//
 //+-------------------------------------------------------+//
 
 
