@@ -66,6 +66,7 @@ char menu_inf_usuario (){
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
+    getchar();
     return opc;
 }
 
@@ -94,8 +95,8 @@ char tela_dados_pessoais (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||\n");
     scanf(" %c", &opc);
+    getchar();
     return opc;
 }
 
@@ -124,8 +125,8 @@ char tela_restricao_alimentar (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||\n");
     scanf(" %c", &opc);
+    getchar();
     return opc;
 }
 
