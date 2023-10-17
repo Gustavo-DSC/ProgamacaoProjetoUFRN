@@ -5,31 +5,24 @@
 #include "utilidades.h"
 #include "validacoes.h"
 
-char nome[100];
-int idade;
-char sexo[100];
-char email[100];
-float peso;
-float altura;
-char ativ_fisica[100];
-
 
 // funções modulo usuario
 
 void modulo_usuario(void) {
+    struct usuario Usuario;
     char opc;
     do {
         opc = menu_inf_usuario();
         switch(opc) {
-            case '1': 	tela_dados_pessoais();
+            case '1': 	tela_dados_pessoais(&Usuario);
                         break;
             case '2': 	tela_restricao_alimentar();
                         break;
-            case '3':   tela_novo_usuario();
+            case '3':   tela_novo_usuario(&Usuario);
                         break;
             case '4':   tela_mudar_usuario();
                         break;
-            case '5':   tela_atualizar_usuario();
+            case '5':   tela_atualizar_usuario(&Usuario);
                         break;
             case '6':   tela_excluir_usuario();
                         break; 
@@ -70,30 +63,30 @@ char menu_inf_usuario (){
     return opc;
 }
 
-char tela_dados_pessoais (){
+char tela_dados_pessoais (struct usuario *Usuario){
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     =====================================    DADOS PESSOAIS    ====================================     ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                   NOME:                                                                                 ||\n");
-    printf("||                   IDADE:                                                                                ||\n");
-    printf("||                   SEXO:                                                                                 ||\n");    
-    printf("||                   E-MAIL:                                                                               ||\n");
-    printf("||                   PESO:                                                                                 ||\n");
-    printf("||                   ALTURA:                                                                               ||\n");
-    printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:                                                       ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                   0 [Voltar]                                                                            ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||\n");    
+    printf("||\n");
+    printf("||\n");
+    printf("||     =====================================    DADOS PESSOAIS    ====================================\n");
+    printf("||\n");
+    printf("||\n");
+    printf("||\n");
+    printf("||                   NOME: %s\n", Usuario->nome);
+    printf("||                   IDADE: %d\n", Usuario->idade);
+    printf("||                   SEXO: %s\n", Usuario->sexo);    
+    printf("||                   E-MAIL: %s\n", Usuario->email);
+    printf("||                   PESO: %.1f\n", Usuario->peso);
+    printf("||                   ALTURA: %.2f\n", Usuario->altura);
+    printf("||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:\n");
+    printf("||\n");
+    printf("||\n");
+    printf("||                   0 [Voltar]\n");    
+    printf("||\n");
+    printf("||\n");
+    printf("||\n");    
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     scanf(" %c", &opc);
     getchar();
@@ -132,7 +125,7 @@ char tela_restricao_alimentar (){
 
 
 
-char tela_novo_usuario (){
+char tela_novo_usuario (struct usuario *Usuario){
   char opc;
       system("clear||cls");
       printf("\nMWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM");
@@ -144,8 +137,8 @@ char tela_novo_usuario (){
       printf("\n||");
       printf("\n||");
       printf("\n||                   NOME: ");    /// Nome do usuário
-      fgets(nome, sizeof(nome), stdin);
-      if (valida_nome(nome) != 0){
+      fgets(Usuario->nome, sizeof(Usuario->nome), stdin);
+      if (valida_nome(Usuario->nome) != 0){
         printf("\033[32m NOME VALIDO \033[0m");
       }
       else {
@@ -153,8 +146,8 @@ char tela_novo_usuario (){
       }
   
       printf("\n||                   IDADE: ");   /// Idade do usuário
-      scanf("%d", &idade); getchar();
-      if (valida_idade(idade) != 0){
+      scanf("%d", &Usuario->idade); getchar();
+      if (valida_idade(Usuario->idade) != 0){
         printf("\033[32m IDADE VALIDO \033[0m");
       }
       else {
@@ -162,8 +155,8 @@ char tela_novo_usuario (){
       }
       
       printf("\n||                   SEXO: ");  /// Sexo 
-      fgets(sexo, sizeof(sexo), stdin);
-      if (valida_sexo(sexo) != 0){
+      fgets(Usuario->sexo, sizeof(Usuario->sexo), stdin);
+      if (valida_sexo(Usuario->sexo) != 0){
         printf("\033[32m SEXO VALIDO \033[0m");
       }
       else {
@@ -171,8 +164,8 @@ char tela_novo_usuario (){
       }
   
       printf("\n||                   E-MAIL: "); /// Email
-      fgets(email, sizeof(email), stdin);
-      if (valida_email(email) != 0){
+      fgets(Usuario->email, sizeof(Usuario->email), stdin);
+      if (valida_email(Usuario->email) != 0){
         printf("\033[32m EMAIL VALIDO \033[0m");
       }
       else {
@@ -180,8 +173,8 @@ char tela_novo_usuario (){
       }
   
       printf("\n||                   PESO: ");   /// Peso do usuário
-      scanf("%f", &peso); getchar();
-      if (valida_peso(peso) != 0){
+      scanf("%f", &Usuario->peso); getchar();
+      if (valida_peso(Usuario->peso) != 0){
         printf("\033[32m PESO VALIDO \033[0m");
       }
       else {
@@ -189,8 +182,8 @@ char tela_novo_usuario (){
       }
   
       printf("\n||                   ALTURA: "); /// Altura do usuário
-      scanf("%f", &altura); getchar();
-      if (valida_altura(altura) != 0){
+      scanf("%f", &Usuario->altura); getchar();
+      if (valida_altura(Usuario->altura) != 0){
         printf("\033[32m ALTURA VALIDO \033[0m");
       }
       else {
@@ -198,7 +191,7 @@ char tela_novo_usuario (){
       }
   
       printf("\n||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:");
-      printf("\n||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA");scanf("%s", ativ_fisica); getchar();
+      printf("\n||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA");scanf("%s", Usuario->ativ_fisica); getchar();
       printf("\n||");
       printf("\n||                   0 [Voltar]\n");    
       printf("\n||");
@@ -242,7 +235,7 @@ char tela_mudar_usuario (){
 
 
 
-char tela_atualizar_usuario (){
+char tela_atualizar_usuario (struct usuario *Usuario){
     char opc;
     system("clear||cls");
     printf("\nMWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM");
@@ -255,8 +248,8 @@ char tela_atualizar_usuario (){
     printf("\n||");
       
     printf("\n||                   NOME: ");    /// Nome do usuário
-    fgets(nome, sizeof(nome), stdin);
-    if (valida_nome(nome) != 0){
+    fgets(Usuario->nome, sizeof(Usuario->nome), stdin);
+    if (valida_nome(Usuario->nome) != 0){
       printf("\033[32m NOME VALIDO \033[0m");
     }
     else {
@@ -264,8 +257,8 @@ char tela_atualizar_usuario (){
     }
  
     printf("\n||                   IDADE: ");   /// Idade do usuário
-    scanf("%d", &idade); getchar();
-    if (valida_idade(idade) != 0){
+    scanf("%d", &Usuario->idade); getchar();
+    if (valida_idade(Usuario->idade) != 0){
       printf("\033[32m IDADE VALIDO \033[0m");
     }
     else {
@@ -273,8 +266,8 @@ char tela_atualizar_usuario (){
     }
       
     printf("\n||                   SEXO: ");  /// Sexo 
-    fgets(sexo, sizeof(sexo), stdin);
-    if (valida_sexo(sexo) != 0){
+    fgets(Usuario->sexo, sizeof(Usuario->sexo), stdin);
+    if (valida_sexo(Usuario->sexo) != 0){
       printf("\033[32m SEXO VALIDO \033[0m");
     }
     else {
@@ -282,8 +275,8 @@ char tela_atualizar_usuario (){
     }
   
     printf("\n||                   E-MAIL: "); /// Email
-    fgets(email, sizeof(email), stdin);
-    if (valida_email(email) != 0){
+    fgets(Usuario->email, sizeof(Usuario->email), stdin);
+    if (valida_email(Usuario->email) != 0){
       printf("\033[32m EMAIL VALIDO \033[0m");
     }
     else {
@@ -291,8 +284,8 @@ char tela_atualizar_usuario (){
     }
   
     printf("\n||                   PESO: ");   /// Peso do usuário
-    scanf("%f", &peso); getchar();
-    if (valida_peso(peso) != 0){
+    scanf("%f", &Usuario->peso); getchar();
+    if (valida_peso(Usuario->peso) != 0){
       printf("\033[32m PESO VALIDO \033[0m");
     }
     else {
@@ -300,8 +293,8 @@ char tela_atualizar_usuario (){
     }
   
     printf("\n||                   ALTURA: ");
-    scanf("%f", &altura); getchar();
-    if (valida_altura(altura) != 0){
+    scanf("%f", &Usuario->altura); getchar();
+    if (valida_altura(Usuario->altura) != 0){
       printf("\033[32m ALTURA VALIDO \033[0m");
     }
     else {
@@ -309,7 +302,7 @@ char tela_atualizar_usuario (){
     }
   
     printf("\n||                   FREQUÊNCIA DE ATIVIDADE FÍSICA:");
-    printf("\n||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA");scanf("%s", ativ_fisica); getchar();
+    printf("\n||                   > NUNCA | RARAMENTE | FREQUENTEMENTE | TODO DIA");scanf("%s", Usuario->ativ_fisica); getchar();
     printf("\n||");
     printf("\n||                   0 [Voltar]\n");    
     printf("\n||");
