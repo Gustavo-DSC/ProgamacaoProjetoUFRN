@@ -8,6 +8,8 @@ char tela_mudar_usuario();
 char tela_atualizar_usuario ();
 char tela_excluir_usuario ();
 void modulo_usuario();
+void salvar_usuarios();
+void carregar_usuarios();
 
 struct usuario {
   char nome[100];
@@ -18,3 +20,5 @@ struct usuario {
   float altura;
   char ativ_fisica[100];
 };
+
+typedef struct usuario usuario;

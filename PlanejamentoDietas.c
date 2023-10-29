@@ -22,8 +22,9 @@
 char menu_inicial();
 
 int main(void){
-  char email[100];
   char opc;
+  carregar_usuarios();
+  
   do {
     opc = menu_inicial();
     switch(opc){
@@ -74,5 +75,7 @@ char menu_inicial (){
     scanf(" %c", &opc);
     return opc;
 }
+
+
 
 
