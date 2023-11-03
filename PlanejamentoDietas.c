@@ -23,8 +23,7 @@ char menu_inicial();
 
 int main(void){
   char opc;
-  carregar_usuarios();
-  
+
   do {
     opc = menu_inicial();
     switch(opc){
