@@ -100,3 +100,25 @@ int valida_altura(float altura) {
     }
     return 0;
 }
+
+
+int valida_atividade_fisica(char *str) {
+    // Remove o caractere de nova linha do final da string
+      str[strcspn(str, "\n")] = 0;
+
+    // Converte a string para minúsculas para facilitar a comparação
+    for(int i = 0; str[i]; i++){
+          str[i] = tolower(str[i]);
+    }
+
+    // Compara a string com os níveis de atividade física permitidos
+    if (strcmp(str, "sedentário") == 0 ||
+        strcmp(str, "leve") == 0 ||
+        strcmp(str, "moderado") == 0 ||
+        strcmp(str, "intenso") == 0 ||
+        strcmp(str, "muito intenso") == 0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}

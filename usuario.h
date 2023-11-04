@@ -26,10 +26,11 @@ char tela_dados_pessoais(lista_usuarios *Lista, usuario *Usuario);
 char tela_restricao_alimentar ();
 char tela_novo_usuario(lista_usuarios *Lista, usuario *Usuario);
 char tela_mudar_usuario(lista_usuarios *Lista);
-char tela_atualizar_usuario (usuario *Usuario);
+char tela_atualizar_usuario (lista_usuarios *Lista, usuario *Usuario);
 char tela_excluir_usuario (lista_usuarios *Lista);
 void modulo_usuario();
 void salvar_usuarios(lista_usuarios *Lista);
 void carregar_usuarios(lista_usuarios *Lista);
 
 #endif
+
