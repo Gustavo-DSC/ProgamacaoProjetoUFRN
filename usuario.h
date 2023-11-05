@@ -10,6 +10,8 @@ struct usuario {
   float altura;
   char ativ_fisica[100];
   int estatos;
+  float imc;
+  float nec_cal; 
 };
 
 typedef struct usuario usuario;

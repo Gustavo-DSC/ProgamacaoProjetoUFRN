@@ -60,10 +60,10 @@ char menu_inicial (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                               1 [Usuário]                                                               ||\n");
+    printf("||                               1 [Paciente]                                                              ||\n");
     printf("||                               2 [Avaliação Nutricional]                                                 ||\n");
     printf("||                               3 [Planejamento Alimentar]                                                ||\n");
-    printf("||                               4 [Acompanhamento do Usuário]                                             ||\n");
+    printf("||                               4 [Acompanhamento do Paciente]                                            ||\n");
     printf("||                               5 [Cardápios]                                                             ||\n");
     printf("||                               6 [Sobre]                                                                 ||\n");
     printf("||                               0 [Sair]                                                                  ||\n");
