@@ -13,7 +13,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include "usuario.h"
-#include "avaliacao_nutricional.h"
 #include "planejamento_alimentar.h"
 #include "acompanhamento.h"
 #include "sobre.h"
@@ -29,15 +28,13 @@ int main(void){
     switch(opc){
       case '1': modulo_usuario();
         break;
-      case '2': modulo_avaliacao_nutri(); 
+      case '2': modulo_plan_alimentar();
         break;
-      case '3': modulo_plan_alimentar();
+      case '3': modulo_acompanhamento();
         break;
-      case '4': modulo_acompanhamento();
+      case '4': modulo_cardapios();
         break;
-      case '5': modulo_cardapios();
-        break;
-      case '6': modulo_sobre();
+      case '5': modulo_sobre();
         break;
     }
   } while (opc != '0');
@@ -61,12 +58,12 @@ char menu_inicial (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                               1 [Paciente]                                                              ||\n");
-    printf("||                               2 [Avaliação Nutricional]                                                 ||\n");
-    printf("||                               3 [Planejamento Alimentar]                                                ||\n");
-    printf("||                               4 [Acompanhamento do Paciente]                                            ||\n");
-    printf("||                               5 [Cardápios]                                                             ||\n");
-    printf("||                               6 [Sobre]                                                                 ||\n");
+    printf("||                               2 [Planejamento Alimentar]                                                ||\n");
+    printf("||                               3 [Acompanhamento do Paciente]                                            ||\n");
+    printf("||                               4 [Cardápios]                                                             ||\n");
+    printf("||                               5 [Sobre]                                                                 ||\n");
     printf("||                               0 [Sair]                                                                  ||\n");
+    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -74,7 +71,6 @@ char menu_inicial (){
     scanf(" %c", &opc);
     return opc;
 }
-
 
 
 
