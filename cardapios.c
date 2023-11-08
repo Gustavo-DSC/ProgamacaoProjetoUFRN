@@ -84,21 +84,15 @@ char tela_adicionar_cardapio (lista_cardapios *Lista, cardapio *Cardapio){
     printf("\n||  Objetivo do cardápio: 1(Ganhar peso) 2(Perde peso) 3(Manter peso) 4(Ganha massa muscular): "); 
     scanf("%d", &Cardapio->objetivo); getchar();
 
-    printf("\n||  DIETA DO CARDÁPIO: ");
-    printf("\n");
-    fgets(Cardapio->dieta_cardapio, sizeof(Cardapio->dieta_cardapio), stdin);
+    printf("\n||  DIETA DO CARDÁPIO (use ; para nova linha): ");
+    char dieta[2000];
+    fgets(dieta, sizeof(dieta), stdin);
+    substituir_caractere(dieta, ';', '\n');
+    strcpy(Cardapio->dieta_cardapio, dieta);
 
     printf("\n||  CALORIAS DO CARDÁPIO: ");
     scanf("%f", &Cardapio->cal_cardapio); getchar();
 
-
-    printf("||                                                                            			                       ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                   	                     ||\n");
-    printf("||                                                                                		                     ||\n");
-    printf("||                                                                                           	             ||\n");    
-    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
@@ -123,16 +117,13 @@ char tela_lista_cardapio (lista_cardapios *Lista){
     printf("||     ====================================   LISTA DE CARDÁPIOS   ===================================     ||\n");
     printf("||                                                                                                         ||\n");
     for (int i = 0; i < Lista->qtd_cardapios; i++) {
-      printf("\n||");
-      printf("\n||\033[32m                   NOME:\033[0m %s", Lista->cardapios[i].nome);
-      printf("\n||                   OBJETIVO: %d", Lista->cardapios[i].objetivo);
-      printf("\n||                   CALORIAS: %.2f", Lista->cardapios[i].cal_cardapio);
-      printf("\n||                   DIESTA: %s", Lista->cardapios[i].dieta_cardapio); 
+      printf("\n");
+      printf("\n\033[32m NOME:\033[0m %s", Lista->cardapios[i].nome);
+      printf("\n OBJETIVO: %d", Lista->cardapios[i].objetivo);
+      printf("\n CALORIAS: %.2f", Lista->cardapios[i].cal_cardapio);
+      printf("\n DIETA: "); 
+      printf("\n%s", Lista->cardapios[i].dieta_cardapio); 
     }
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                            			                       ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                            			                       ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                            			                       ||\n");
     printf("||      0 [Voltar]                                                                                         ||\n");
@@ -168,9 +159,11 @@ char tela_editar_cardapio (lista_cardapios *Lista){
           printf("    Objetivo do cardápio: 1(Ganhar peso) 2(Perde peso) 3(Manter peso) 4(Ganha massa muscular):"); 
           scanf("%d", &Lista->cardapios[i].objetivo); getchar();
     
-          printf("    DIETA DO CARDÁPIO: ");
-          printf("\n");
-          fgets(Lista->cardapios[i].dieta_cardapio, sizeof(Lista->cardapios[i].dieta_cardapio), stdin);
+          printf("\n||  DIETA DO CARDÁPIO (use ; para nova linha): ");
+          char dieta[2000];
+          fgets(dieta, sizeof(dieta), stdin);
+          substituir_caractere(dieta, ';', '\n');
+          strcpy(Lista->cardapios[i].dieta_cardapio, dieta);
     
           printf("    CALORIAS DO CARDÁPIO: ");
           scanf("%f", &Lista->cardapios[i].cal_cardapio); getchar();
@@ -232,9 +225,9 @@ char tela_excluir_cardapio (lista_cardapios *Lista){
 
 
 
-// Função para salvar as informações do usuario
+// Função para salvar as informações do cardápio
 void salvar_cardapios(lista_cardapios *Lista) {
-  // Abre o arquivo binário
+  // Abre o arquivo texto
   FILE *arquivo = fopen("cardapios.txt", "wt");
 
   // Verifica se o arquivo foi aberto com sucesso
@@ -253,9 +246,9 @@ void salvar_cardapios(lista_cardapios *Lista) {
   fclose(arquivo);
 }
 
-// Função para ler as informações do arquivo binário
+// Função para ler as informações do arquivo 
 void carregar_cardapios(lista_cardapios *Lista) {
-  // Abre o arquivo binário
+  // Abre o arquivo texto
   FILE *arquivo = fopen("cardapios.txt", "rt");
 
   // Verifica se o arquivo foi aberto com sucesso
@@ -264,9 +257,16 @@ void carregar_cardapios(lista_cardapios *Lista) {
     return;
   }
 
-  // Lê as informações do arquivo para o array de contatos
   Lista->qtd_cardapios = fread(Lista->cardapios, sizeof(cardapio), 100, arquivo);
 
   // Fecha o arquivo
   fclose(arquivo);
+}
+
+void substituir_caractere(char* str, char procurar, char substituir){
+    char *posicao_atual = strchr(str,procurar);
+    while (posicao_atual){
+        *posicao_atual = substituir;
+        posicao_atual = strchr(posicao_atual,procurar);
+    }
 }

@@ -6,7 +6,7 @@ struct  cardapio {
     int objetivo;
     float cal_cardapio;
     int estatos;
-    char dieta_cardapio[1000];
+    char dieta_cardapio[2000];
 };
 
 typedef struct cardapio cardapio;
@@ -27,5 +27,6 @@ char tela_excluir_cardapio(lista_cardapios *Lista);
 void modulo_cardapios();
 void carregar_cardapios(lista_cardapios *Lista);
 void salvar_cardapios(lista_cardapios *Lista);
+void substituir_caractere(char* str, char procurar, char substituir);
 
 #endif
