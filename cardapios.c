@@ -193,14 +193,14 @@ char tela_excluir_cardapio (lista_cardapios *Lista){
     printf("||                                                                                                         ||\n");
     printf("||     =====================================   EXCLUIR CARDÁPIO   ====================================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("       Nome do usuario a ser excluído: ");
+    printf("||     Nome do cardápio a ser excluído: ");
     fgets(buscar_nome, sizeof(buscar_nome), stdin);
   
-    // Procura o usuario na lista
+    // Procura o cardápio na lista
     for (i = 0; i < Lista->qtd_cardapios; i++) {
       if (strcmp(Lista->cardapios[i].nome, buscar_nome) == 0) {
   
-        // Marca o usuario como excluído
+        // Marca o cardápio como excluído
         Lista->cardapios[i].estatos = 1;
   
         // salvar cardapios
