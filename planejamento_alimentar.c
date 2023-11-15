@@ -2,16 +2,24 @@
 #include <stdlib.h>
 #include <string.h>
 #include <unistd.h>
+#include "cardapios.h"
 #include "planejamento_alimentar.h"
 #include "usuario.h"
+
+
 
 
 
 void modulo_plan_alimentar(void) {
     usuario Usuario;
     lista_usuarios Lista;
+    cardapio Cardapio;
+    lista_cardapios ListaCardapio;
     Lista.qtd_usuarios = 0;
+    ListaCardapio.qtd_cardapios = 0;
     carregar_usuarios(&Lista);
+    carregar_cardapios(&ListaCardapio);
+    //carregar_cardapios(&ListaCardapio);
     char opc;
     do {
         opc = menu_plan_alimentar();
@@ -21,7 +29,7 @@ void modulo_plan_alimentar(void) {
                         break;
             case '2': 	tela_cardapio_peso();
                         break;
-            case '3': 	tela_cardapio_nutricional();
+            case '3': 	tela_cardapio_nutricional(&ListaCardapio,&Lista);
                         break;
 
         } 		
@@ -56,12 +64,12 @@ char menu_plan_alimentar(){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
+    scanf(" %c", &opc); getchar();
     return opc;
 }
 
 
-char tela_imc_cal (lista_usuarios *Lista) {
+char tela_imc_cal (lista_usuarios *Lista){
     char opc;
     char buscar_nome[100];
     getchar();
@@ -126,6 +134,7 @@ char tela_imc_cal (lista_usuarios *Lista) {
 
 
 
+
 char tela_cardapio_peso(){
     char opc;
     system("clear||cls");
@@ -154,13 +163,16 @@ char tela_cardapio_peso(){
     printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
-    
+
 }
 
 
 
-char tela_cardapio_nutricional(){
+char tela_cardapio_nutricional(lista_cardapios *ListaCardapio, lista_usuarios *Lista){
     char opc;
+    char buscar_nome[100];
+    int i;
+    int j;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -168,18 +180,37 @@ char tela_cardapio_nutricional(){
     printf("||                                                                                                         ||\n");
     printf("||     ========================   CARDÁPIOS PARA NECESSIDADES NUTRICIONAIS   =========================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     Café da manhã:                                                                                      ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     Almoço:                                                                                             ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     Jantar :                                                                                            ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
+    printf("||     NOME DO PACIENTE: "); fgets(buscar_nome, sizeof(buscar_nome), stdin);
+    for (i = 0; i < Lista->qtd_usuarios; i++) {
+      if (strcmp(Lista->usuarios[i].nome, buscar_nome) == 0) {
+        for (j = 0; j < ListaCardapio->qtd_cardapios; j++) {
+          if (Lista->usuarios[i].imc <= 18.49 &&  ListaCardapio->cardapios[j].cal_cardapio >= (Lista->usuarios[i].nec_cal + 200)){
+            printf("\n");
+            printf("\n\033[32m NOME:\033[0m %s", ListaCardapio->cardapios[j].nome);
+            printf("\n OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
+            printf("\n CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
+            printf("\n DIETA: "); 
+            printf("\n%s", ListaCardapio->cardapios[j].dieta_cardapio); 
+          }
+          else if (Lista->usuarios[i].imc >= 18.5 && Lista->usuarios[i].imc < 25 && Lista->usuarios[i].nec_cal == ListaCardapio->cardapios[j].cal_cardapio){
+            printf("\n");
+            printf("\n\033[32m NOME:\033[0m %s", ListaCardapio->cardapios[j].nome);
+            printf("\n OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
+            printf("\n CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
+            printf("\n DIETA: "); 
+            printf("\n%s", ListaCardapio->cardapios[j].dieta_cardapio); 
+          }
+          else if (Lista->usuarios[i].imc > 29.99 && ListaCardapio->cardapios[j].cal_cardapio <= (Lista->usuarios[i].nec_cal - 200)){
+            printf("\n");
+            printf("\n\033[32m NOME:\033[0m %s", ListaCardapio->cardapios[j].nome);
+            printf("\n OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
+            printf("\n CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
+            printf("\n DIETA: "); 
+            printf("\n%s", ListaCardapio->cardapios[j].dieta_cardapio); 
+          }
+        }
+      }
+    }
     printf("||                                                                                                         ||\n");   
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
@@ -187,4 +218,5 @@ char tela_cardapio_nutricional(){
     printf("||Selecione a opção:\n");
     scanf(" %c", &opc);
     return opc;
+  
 }
