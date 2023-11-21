@@ -1,5 +1,5 @@
-#ifndef PLANEJAMENTO_ALIMENTAR_H
-#define PLANEJAMENTO_ALIMENTAR_H 
+#ifndef CARDAPIOS_H
+#define CARDAPIOS_H 
 
 struct  cardapio {
     char nome[100];
