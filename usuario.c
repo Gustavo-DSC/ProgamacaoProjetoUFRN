@@ -234,7 +234,7 @@ char tela_novo_usuario (lista_usuarios *Lista, usuario *Usuario){
           printf("\033[31m ATIVIDADE FÍSICA INVALIDA! \033[0m");
         }
       } while (valida_atividade_fisica(Usuario->ativ_fisica) == 0);
-
+      Usuario->imc = imc_usuario(*Usuario);
       printf("\n||");
       printf("\n||                   0 [Voltar]\n");    
       printf("\n||");
@@ -250,7 +250,7 @@ char tela_novo_usuario (lista_usuarios *Lista, usuario *Usuario){
 
 
 char tela_mudar_usuario (lista_usuarios *Lista){
-    char opc;
+    char opc, slc;
     carregar_usuarios(Lista);
     system("clear||cls");
     printf("\nMWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM");
@@ -258,16 +258,51 @@ char tela_mudar_usuario (lista_usuarios *Lista){
     printf("\n||                                                                                                         ||");
     printf("\n||                                                                                                         ||");
     printf("\n||   ====================================   LISTA DE PACIENTES  =======================================    ||");
-    for (int i = 0; i < Lista->qtd_usuarios; i++) {
-      printf("\n||");
-      printf("\n||\033[32m                   NOME:\033[0m %s", Lista->usuarios[i].nome);
-      printf("||                   IDADE: %d", Lista->usuarios[i].idade);
-      printf("\n||                   SEXO: %s", Lista->usuarios[i].sexo);    
-      printf("\n||                   E-MAIL: %s", Lista->usuarios[i].email);
-      printf("\n||                   PESO: %.1f", Lista->usuarios[i].peso);
-      printf("\n||                   ALTURA: %.2f", Lista->usuarios[i].altura);
+    printf("\n||   1 [Pacientes com alto nível de obesidade]                                                             ||");
+    printf("\n||   2 [Pacientes com alto nível de magreza]                                                               ||");
+    printf("\n||   3 [Pacientes do sexo masculino]                                                                       ||");
+    printf("\n||   4 [Pacientes do sexo feminino]                                                                        ||");
+    scanf(" %c", &slc);
+    switch(slc) {
+        case '1':
+            // Filtro para pacientes com alto nível de obesidade
+            for (int i = 0; i < Lista->qtd_usuarios; i++) {
+                if (Lista->usuarios[i].imc >= 30) { // IMC >= 30 é considerado obesidade
+                    imprimir_usuario(Lista->usuarios[i]);
+                }
+            }
+            break;
+        case '2':
+            // Filtro para pacientes com alto nível de magreza
+            for (int i = 0; i < Lista->qtd_usuarios; i++) {
+                if (Lista->usuarios[i].imc < 18.5) { // IMC < 18.5 é considerado magreza
+                    imprimir_usuario(Lista->usuarios[i]);
+                }
+            }
+            break;
+        case '3':
+            // Filtro para pacientes do sexo masculino
+            for (int i = 0; i < Lista->qtd_usuarios; i++) {
+                if (strcmp(Lista->usuarios[i].sexo, "masculino") == 0) {
+                    imprimir_usuario(Lista->usuarios[i]);
+                }
+            }
+            break;
+        case '4':
+            // Filtro para pacientes do sexo feminino
+            for (int i = 0; i < Lista->qtd_usuarios; i++) {
+                if (strcmp(Lista->usuarios[i].sexo, "feminino") == 0) {
+                    imprimir_usuario(Lista->usuarios[i]);
+                }
+            }
+            break;
+        case '0':
+            // Voltar
+            break;
+        default:
+            printf("\nOpção inválida. Tente novamente.\n");
+            break;
     }
-    
     printf("\n||                                                                                                         ||");
     printf("\n||                                                                                                         ||");
     printf("\n||                                                                                                         ||");    
@@ -453,4 +488,22 @@ void carregar_usuarios(lista_usuarios *Lista) {
 
   // Fecha o arquivo
   fclose(arquivo);
+}
+
+
+void imprimir_usuario(usuario u) {
+    printf("\n||");
+    printf("\n||\033[32m                   NOME:\033[0m %s", u.nome);
+    printf("||                   IDADE: %d", u.idade);
+    printf("\n||                   SEXO: %s", u.sexo);    
+    printf("\n||                   E-MAIL: %s", u.email);
+    printf("\n||                   PESO: %.1f", u.peso);
+    printf("\n||                   ALTURA: %.2f", u.altura);
+    printf("\n||                   IMC: %.2f", u.imc);
+}
+
+
+float imc_usuario(usuario u) {
+  u.imc = u.peso / (u.altura * u.altura);
+  return u.imc;
 }

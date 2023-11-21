@@ -33,6 +33,8 @@ char tela_excluir_usuario (lista_usuarios *Lista);
 void modulo_usuario();
 void salvar_usuarios(lista_usuarios *Lista);
 void carregar_usuarios(lista_usuarios *Lista);
+void imprimir_usuario(usuario u);
+float imc_usuario(usuario u);
 
 #endif
 
