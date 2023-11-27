@@ -3,6 +3,7 @@
 
 struct usuario {
   char nome[100];
+  char cpf[14];
   int idade;
   char sexo[100];
   char email[100];

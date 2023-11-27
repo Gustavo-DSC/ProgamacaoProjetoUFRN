@@ -5,3 +5,4 @@ int valida_email(char *email);
 int valida_peso(float);
 int valida_altura(float);
 int valida_atividade_fisica(char *str);
+int valida_cpf(char *cpf);
