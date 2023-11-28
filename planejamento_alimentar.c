@@ -71,18 +71,18 @@ char menu_plan_alimentar(){
 
 char tela_imc_cal (lista_usuarios *Lista){
     char opc;
-    char buscar_nome[100];
-    getchar();
+    char buscar_cpf[14];
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     ======================================   IMC DO PACIENTE  =====================================     ||\n");
-    printf("||     NOME DO PACIENTE: "); fgets(buscar_nome, sizeof(buscar_nome), stdin);
-    int i;
-    for (i = 0; i < Lista->qtd_usuarios; i++) {
-      if (strcmp(Lista->usuarios[i].nome, buscar_nome) == 0) {
+    printf("||     CPF DO PACIENTE: ");
+    fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+    buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
+    for (int i = 0; i < Lista->qtd_usuarios; i++) {
+      if (strcmp(Lista->usuarios[i].cpf, buscar_cpf) == 0) {
         Lista->usuarios[i].imc = Lista->usuarios[i].peso / (Lista->usuarios[i].altura * Lista->usuarios[i].altura);
 
         if (strcmp(Lista->usuarios[i].sexo, "masculino") == 0){
@@ -127,6 +127,7 @@ char tela_imc_cal (lista_usuarios *Lista){
         printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
         printf("||Selecione a opção:\n");
         scanf(" %c", &opc);
+        getchar();
       }
     }
     return opc;
@@ -170,7 +171,7 @@ char tela_cardapio_peso(){
 
 char tela_cardapio_nutricional(lista_cardapios *ListaCardapio, lista_usuarios *Lista){
     char opc;
-    char buscar_nome[100];
+    char buscar_cpf[14];
     int i;
     int j;
     system("clear||cls");
@@ -180,32 +181,36 @@ char tela_cardapio_nutricional(lista_cardapios *ListaCardapio, lista_usuarios *L
     printf("||                                                                                                         ||\n");
     printf("||     ========================   CARDÁPIOS PARA NECESSIDADES NUTRICIONAIS   =========================     ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||     NOME DO PACIENTE: "); fgets(buscar_nome, sizeof(buscar_nome), stdin);
+    printf("||     CPF DO PACIENTE: "); 
+    fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+    buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
     for (i = 0; i < Lista->qtd_usuarios; i++) {
-      if (strcmp(Lista->usuarios[i].nome, buscar_nome) == 0) {
+      if (strcmp(Lista->usuarios[i].cpf, buscar_cpf) == 0) {
+        printf("\n\033[32m       PACIENTE:\033[0m %s", Lista->usuarios[i].nome);
+        printf("\n       CALORIAS NECESSÁRIAS: %.2f", Lista->usuarios[i].nec_cal);
         for (j = 0; j < ListaCardapio->qtd_cardapios; j++) {
           if (Lista->usuarios[i].imc <= 18.49 &&  ListaCardapio->cardapios[j].cal_cardapio >= (Lista->usuarios[i].nec_cal + 200)){
             printf("\n");
-            printf("\n\033[32m NOME:\033[0m %s", ListaCardapio->cardapios[j].nome);
-            printf("\n OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
-            printf("\n CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
-            printf("\n DIETA: "); 
+            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", ListaCardapio->cardapios[j].nome);
+            printf("\n       OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
+            printf("\n       CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
+            printf("\n       DIETA: "); 
             printf("\n%s", ListaCardapio->cardapios[j].dieta_cardapio); 
           }
           else if (Lista->usuarios[i].imc >= 18.5 && Lista->usuarios[i].imc < 25 && Lista->usuarios[i].nec_cal == ListaCardapio->cardapios[j].cal_cardapio){
             printf("\n");
-            printf("\n\033[32m NOME:\033[0m %s", ListaCardapio->cardapios[j].nome);
-            printf("\n OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
-            printf("\n CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
-            printf("\n DIETA: "); 
+            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", ListaCardapio->cardapios[j].nome);
+            printf("\n       OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
+            printf("\n       CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
+            printf("\n       DIETA: "); 
             printf("\n%s", ListaCardapio->cardapios[j].dieta_cardapio); 
           }
           else if (Lista->usuarios[i].imc > 29.99 && ListaCardapio->cardapios[j].cal_cardapio <= (Lista->usuarios[i].nec_cal - 200)){
             printf("\n");
-            printf("\n\033[32m NOME:\033[0m %s", ListaCardapio->cardapios[j].nome);
-            printf("\n OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
-            printf("\n CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
-            printf("\n DIETA: "); 
+            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", ListaCardapio->cardapios[j].nome);
+            printf("\n       OBJETIVO: %d", ListaCardapio->cardapios[j].objetivo);
+            printf("\n       CALORIAS: %.2f", ListaCardapio->cardapios[j].cal_cardapio);
+            printf("\n       DIETA: "); 
             printf("\n%s", ListaCardapio->cardapios[j].dieta_cardapio); 
           }
         }
