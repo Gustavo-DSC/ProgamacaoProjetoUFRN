@@ -195,72 +195,76 @@ char tela_cardapio_peso(){
 
 
 
-char tela_cardapio_nutricional(cardapio *Cardapio, usuario *Usuario){
-    FILE *arquivo = fopen("usuarios.data", "rb");
-    // Verifica se o arquivo está aberto
-    if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo!\n");
-        return 0;
-    }
-    FILE *arquivoC = fopen("cardapios.data", "rb");
-    // Verifica se o arquivo está aberto
-    if (arquivoC == NULL) {
-        printf("Erro ao abrir o arquivo!\n");
-        return 0;
-    }
-  
-    char opc;
-    char buscar_cpf[14];
-    system("clear||cls");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     ========================   CARDÁPIOS PARA NECESSIDADES NUTRICIONAIS   =========================     ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||     CPF DO PACIENTE: "); 
-    fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
-    buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
-  // Lê os usuários do arquivo um por um
-    while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
-        // Compara o CPF do usuário com o CPF buscado
-        if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
-        printf("\n\033[32m       PACIENTE:\033[0m %s", Usuario->nome);
-        printf("\n       CALORIAS NECESSÁRIAS: %.2f", Usuario->nec_cal);
-        while (fread(&Cardapio, sizeof(cardapio), 1, arquivo)){
-          if (Usuario->imc <= 18.49 &&  Cardapio->cal_cardapio >= (Usuario->nec_cal + 200)){
+
+char tela_cardapio_nutricional(cardapio *CardapioParam, usuario *UsuarioParam){
+  FILE *arquivo = fopen("usuarios.data", "rb");
+  // Verifica se o arquivo está aberto
+  if (arquivo == NULL) {
+      printf("Erro ao abrir o arquivo!\n");
+      return 0;
+  }
+  FILE *arquivoC = fopen("cardapios.data", "rb");
+  // Verifica se o arquivo está aberto
+  if (arquivoC == NULL) {
+      printf("Erro ao abrir o arquivo!\n");
+      return 0;
+  }
+
+  char opc;
+  char buscar_cpf[14];
+  system("clear||cls");
+  printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+  printf("||                                                                                                         ||\n");    
+  printf("||                                                                                                         ||\n");
+  printf("||                                                                                                         ||\n");
+  printf("||     ========================   CARDÁPIOS PARA NECESSIDADES NUTRICIONAIS   =========================     ||\n");
+  printf("||                                                                                                         ||\n");
+  printf("||     CPF DO PACIENTE: "); 
+  fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+  buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
+  usuario UsuarioLocal;
+  cardapio CardapioLocal;
+  while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo)) {
+      if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0) {
+          printf("\n\033[32m       PACIENTE:\033[0m %s", UsuarioLocal.nome);
+          printf("\n       CALORIAS NECESSÁRIAS: %.2f", UsuarioLocal.nec_cal);
+          while (fread(&CardapioLocal, sizeof(cardapio), 1, arquivoC)){
+          if (UsuarioLocal.imc <= 18.49 &&  CardapioLocal.cal_cardapio >= (UsuarioLocal.nec_cal + 200)){
             printf("\n");
-            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", Cardapio->nome);
-            printf("\n       OBJETIVO: %d", Cardapio->objetivo);
-            printf("\n       CALORIAS: %.2f", Cardapio->cal_cardapio);
+            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", CardapioLocal.nome);
+            printf("\n       OBJETIVO: %d", CardapioLocal.objetivo);
+            printf("\n       CALORIAS: %.2f", CardapioLocal.cal_cardapio);
             printf("\n       DIETA: "); 
-            printf("\n%s", Cardapio->dieta_cardapio); 
+            printf("\n%s", CardapioLocal.dieta_cardapio); 
           }
-          else if (Usuario->imc >= 18.5 && Usuario->imc < 25 && Usuario->nec_cal == Cardapio->cal_cardapio){
+          else if (UsuarioLocal.imc >= 18.5 && UsuarioLocal.imc < 25 && UsuarioLocal.nec_cal <= CardapioLocal.cal_cardapio + 200 && UsuarioLocal.nec_cal >= CardapioLocal.cal_cardapio - 200 ){
             printf("\n");
-            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", Cardapio->nome);
-            printf("\n       OBJETIVO: %d", Cardapio->objetivo);
-            printf("\n       CALORIAS: %.2f", Cardapio->cal_cardapio);
+            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", CardapioLocal.nome);
+            printf("\n       OBJETIVO: %d", CardapioLocal.objetivo);
+            printf("\n       CALORIAS: %.2f", CardapioLocal.cal_cardapio);
             printf("\n       DIETA: "); 
-            printf("\n%s", Cardapio->dieta_cardapio); 
+            printf("\n%s", CardapioLocal.dieta_cardapio); 
           }
-          else if (Usuario->imc > 29.99 && Cardapio->cal_cardapio <= (Usuario->nec_cal - 200)){
+          else if (UsuarioLocal.imc > 29.99 && CardapioLocal.cal_cardapio <= (UsuarioLocal.nec_cal - 200)){
             printf("\n");
-            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", Cardapio->nome);
-            printf("\n       OBJETIVO: %d", Cardapio->objetivo);
-            printf("\n       CALORIAS: %.2f", Cardapio->cal_cardapio);
+            printf("\n\033[32m       NOME DO CARDÁPIO:\033[0m %s", CardapioLocal.nome);
+            printf("\n       OBJETIVO: %d", CardapioLocal.objetivo);
+            printf("\n       CALORIAS: %.2f", CardapioLocal.cal_cardapio);
             printf("\n       DIETA: "); 
-            printf("\n%s", Cardapio->dieta_cardapio); 
+            printf("\n%s", CardapioLocal.dieta_cardapio); 
           }
         }
       }
     }
-    printf("||                                                                                                         ||\n");   
-    printf("||    0 [Voltar]                                                                                           ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
-    return opc;
-  
+  fclose(arquivo);
+  fclose(arquivoC);
+  printf("||                                                                                                         ||\n");   
+  printf("||    0 [Voltar]                                                                                           ||\n");
+  printf("||                                                                                                         ||\n");
+  printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+  printf("||Selecione a opção:\n");
+  scanf(" %c", &opc);
+  int c;
+  while ((c = getchar()) != '\n' && c != EOF);
+  return opc;
 }
