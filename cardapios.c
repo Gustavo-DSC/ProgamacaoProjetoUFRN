@@ -9,22 +9,17 @@
 
 void modulo_cardapios(void) {
     cardapio Cardapio;
-    lista_cardapios Lista;
     char opc;
-    carregar_cardapios(&Lista);
     do {
         opc = menu_cardapios();
         switch(opc) {
-            case '1':   tela_adicionar_cardapio(&Lista, &Cardapio);
-                        salvar_cardapios(&Lista);
+            case '1':   tela_adicionar_cardapio(&Cardapio);
                         break;
-            case '2': 	carregar_cardapios(&Lista);
-                        tela_lista_cardapio(&Lista);
+            case '2':   tela_lista_cardapio(&Cardapio);
                         break;
-            case '3':   tela_editar_cardapio(&Lista);
-                        salvar_cardapios(&Lista);
+            case '3':   tela_editar_cardapio(&Cardapio);
                         break;
-            case '4':   tela_excluir_cardapio(&Lista);
+            case '4':   tela_excluir_cardapio(&Cardapio);
                         break;
         } 		
     } while (opc != '0');
@@ -63,11 +58,13 @@ char menu_cardapios (){
 }
 
 
-char tela_adicionar_cardapio (lista_cardapios *Lista, cardapio *Cardapio){
-    if (Lista->qtd_cardapios == 100) {
-      printf("Lista está cheia!\n");
+char tela_adicionar_cardapio (cardapio *Cardapio){
+    FILE *arquivo = fopen("cardapios.data", "ab+");
+    // Verifica se o arquivo está aberto
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return 0;
     }
-    else { 
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -92,7 +89,9 @@ char tela_adicionar_cardapio (lista_cardapios *Lista, cardapio *Cardapio){
 
     printf("\n||  CALORIAS DO CARDÁPIO: ");
     scanf("%f", &Cardapio->cal_cardapio); getchar();
-
+    fwrite(Cardapio, sizeof(cardapio), 1, arquivo);
+    fclose(arquivo);
+  
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
@@ -102,12 +101,17 @@ char tela_adicionar_cardapio (lista_cardapios *Lista, cardapio *Cardapio){
     printf("||      0 [Voltar]                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     scanf(" %c", &opc);
-    Lista->cardapios[Lista->qtd_cardapios++] = *Cardapio;
     return opc;
-  }
 }
                     
-char tela_lista_cardapio (lista_cardapios *Lista){
+char tela_lista_cardapio (cardapio *CardapioParam){
+    FILE *arquivo = fopen("cardapios.data", "rb");
+    // Verifica se o arquivo está aberto
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return 0;
+    }
+
     char opc;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -116,13 +120,14 @@ char tela_lista_cardapio (lista_cardapios *Lista){
     printf("||                                                                                                         ||\n");
     printf("||     ====================================   LISTA DE CARDÁPIOS   ===================================     ||\n");
     printf("||                                                                                                         ||\n");
-    for (int i = 0; i < Lista->qtd_cardapios; i++) {
+    cardapio CardapioLocal;
+    while (fread(&CardapioLocal, sizeof(cardapio), 1, arquivo)){
       printf("\n");
-      printf("\n\033[32m NOME:\033[0m %s", Lista->cardapios[i].nome);
-      printf("\n OBJETIVO: %d", Lista->cardapios[i].objetivo);
-      printf("\n CALORIAS: %.2f", Lista->cardapios[i].cal_cardapio);
+      printf("\n\033[32m NOME:\033[0m %s", CardapioLocal.nome);
+      printf("\n OBJETIVO: %d", CardapioLocal.objetivo);
+      printf("\n CALORIAS: %.2f", CardapioLocal.cal_cardapio);
       printf("\n DIETA: "); 
-      printf("\n%s", Lista->cardapios[i].dieta_cardapio); 
+      printf("\n%s", CardapioLocal.dieta_cardapio); 
     }
     printf("||                                                                                                         ||\n");
     printf("||                                                                            			                       ||\n");
@@ -130,14 +135,18 @@ char tela_lista_cardapio (lista_cardapios *Lista){
     printf("||                                                                            			                       ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     scanf(" %c", &opc);
+    fclose(arquivo);
     return opc;
-}                                                
+}
+                                               
 
-char tela_editar_cardapio (lista_cardapios *Lista){
-    if (Lista->qtd_cardapios == 100) {
-      printf("Lista está cheia!\n");
+char tela_editar_cardapio (cardapio *Cardapio){
+    FILE *arquivo = fopen("cardapios.data", "rb+");
+    // Verifica se o arquivo está aberto
+    if (arquivo == NULL) {
+        printf("Erro ao abrir o arquivo!\n");
+        return 0;
     }
-    else { 
       char opc;
       char buscar_nome[100];
       system("clear||cls");
@@ -147,26 +156,58 @@ char tela_editar_cardapio (lista_cardapios *Lista){
       printf("||                                                                                                         ||\n");
       printf("||     ======================================   EDITAR CARDÁPIO   ====================================     ||\n");
       printf("||                                                                                                         ||\n");
-      printf("||     	PESQUISAR POR NOME: "); fgets(buscar_nome, sizeof(buscar_nome), stdin);
+      printf("||     	PESQUISAR POR NOME: "); 
+      fgets(buscar_nome, sizeof(buscar_nome), stdin);
+      buscar_nome[strcspn(buscar_nome, "\n")] = '\0';
       printf("||\n");
       printf("||\n");
-      int i;
-      for (i = 0; i < Lista->qtd_cardapios; i++) {
-        if (strcmp(Lista->cardapios[i].nome, buscar_nome) == 0) {
-          printf("    NOME DO CARDÁPIO: ");
-          fgets(Lista->cardapios[i].nome, sizeof(Lista->cardapios[i].nome), stdin);
-    
-          printf("    Objetivo do cardápio: 1(Ganhar peso) 2(Perde peso) 3(Manter peso) 4(Ganha massa muscular):"); 
-          scanf("%d", &Lista->cardapios[i].objetivo); getchar();
-    
-          printf("\n||  DIETA DO CARDÁPIO (use ; para nova linha): ");
-          char dieta[2000];
-          fgets(dieta, sizeof(dieta), stdin);
-          substituir_caractere(dieta, ';', '\n');
-          strcpy(Lista->cardapios[i].dieta_cardapio, dieta);
-    
-          printf("    CALORIAS DO CARDÁPIO: ");
-          scanf("%f", &Lista->cardapios[i].cal_cardapio); getchar();
+
+      while (fread(Cardapio, sizeof(cardapio), 1, arquivo)) {
+      // Compara o CPF do usuário com o CPF buscado
+        if (strcmp(Cardapio->nome, buscar_nome) == 0) {
+          
+          printf("Deseja atualizar a idade? (s/n): ");
+          scanf(" %c", &opc); getchar();
+          if (opc == 's' || opc == 'S') {
+            printf("    NOME DO CARDÁPIO: ");
+            fgets(Cardapio->nome, sizeof(Cardapio->nome), stdin);
+            fseek(arquivo, -sizeof(cardapio), SEEK_CUR);
+            fwrite(Cardapio, sizeof(cardapio), 1, arquivo);
+            fseek(arquivo, 0, SEEK_CUR);
+          }
+          
+          printf("Deseja atualizar a idade? (s/n): ");
+          scanf(" %c", &opc); getchar();
+          if (opc == 's' || opc == 'S') {
+            printf("    Objetivo do cardápio: 1(Ganhar peso) 2(Perde peso) 3(Manter peso) 4(Ganha massa muscular):"); 
+            scanf("%d", &Cardapio->objetivo); getchar();
+            fseek(arquivo, -sizeof(cardapio), SEEK_CUR);
+            fwrite(Cardapio, sizeof(cardapio), 1, arquivo);
+            fseek(arquivo, 0, SEEK_CUR);
+          }
+
+          printf("Deseja atualizar a idade? (s/n): ");
+          scanf(" %c", &opc); getchar();
+          if (opc == 's' || opc == 'S') {
+            printf("\n||  DIETA DO CARDÁPIO (use ; para nova linha): ");
+            char dieta[2000];
+            fgets(dieta, sizeof(dieta), stdin);
+            substituir_caractere(dieta, ';', '\n');
+            strcpy(Cardapio->dieta_cardapio, dieta);
+            fseek(arquivo, -sizeof(cardapio), SEEK_CUR);
+            fwrite(Cardapio, sizeof(cardapio), 1, arquivo);
+            fseek(arquivo, 0, SEEK_CUR);
+          }
+
+          printf("Deseja atualizar a idade? (s/n): ");
+          scanf(" %c", &opc); getchar();
+          if (opc == 's' || opc == 'S') {
+            printf("    CALORIAS DO CARDÁPIO: ");
+            scanf("%f", &Cardapio->cal_cardapio); getchar();
+            fseek(arquivo, -sizeof(cardapio), SEEK_CUR);
+            fwrite(Cardapio, sizeof(cardapio), 1, arquivo);
+            fseek(arquivo, 0, SEEK_CUR);
+          }
         }
       }
       printf("||                                                                                                         ||\n");
@@ -179,12 +220,18 @@ char tela_editar_cardapio (lista_cardapios *Lista){
       printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
       scanf(" %c", &opc);
       return opc;
-      }
 }
 
-char tela_excluir_cardapio (lista_cardapios *Lista){
+
+char tela_excluir_cardapio (cardapio *Cardapio){
+    FILE *arquivo = fopen("cardapios.data", "rb");
+    FILE *temp = fopen("temp.data", "wb"); // Arquivo temporário
+    // Verifica se o arquivo está aberto
+    if (arquivo == NULL) {
+      printf("Erro ao abrir o arquivo!\n");
+      return 0;
+    }
     char opc;
-    int i;
     char buscar_nome[100];
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -195,21 +242,42 @@ char tela_excluir_cardapio (lista_cardapios *Lista){
     printf("||                                                                                                         ||\n");
     printf("||     Nome do cardápio a ser excluído: ");
     fgets(buscar_nome, sizeof(buscar_nome), stdin);
+    buscar_nome[strcspn(buscar_nome, "\n")] = '\0';
   
-    // Procura o cardápio na lista
-    for (i = 0; i < Lista->qtd_cardapios; i++) {
-      if (strcmp(Lista->cardapios[i].nome, buscar_nome) == 0) {
-  
-        // Marca o cardápio como excluído
-        Lista->cardapios[i].estatos = 1;
-  
-        // salvar cardapios
-        salvar_cardapios(Lista);
-        carregar_cardapios(Lista);
-        // Diminui a quantidade de cardapios
-        Lista->qtd_cardapios--;
+    // Lê os cardapios do arquivo um por um
+    while (fread(Cardapio, sizeof(cardapio), 1, arquivo)) {
+      // Compara o CPF do cardapio com o CPF buscado
+      if (strcmp(Cardapio->nome, buscar_nome) == 0) {
+        // Pergunta se o cardapio quer excluir o cardapio
+        printf("Deseja realmente excluir este cardapio? S/N \n");
+        do{
+          scanf( "%c", &opc);getchar();
+          if (opc == 'S' || opc == 's') {
+            // Não copia o cardapio para o novo arquivo
+          }
+          else if (opc == 'N' || opc == 'n') {
+            printf("Exclusão cancelada!\n");
+            // Copia o cardapio para o novo arquivo
+            fwrite(Cardapio, sizeof(cardapio), 1, temp);
+          }
+        }while (opc != 'S' && opc != 's' && opc != 'N' && opc != 'n');
+      }  
+      else {
+        // Copia o cardapio para o novo arquivo
+        fwrite(Cardapio, sizeof(cardapio), 1, temp);
       }
     }
+  
+    // Fecha os arquivos
+    fclose(arquivo);
+    fclose(temp);
+  
+    // Exclui o arquivo antigo
+    remove("cardapios.data");
+  
+    // Renomeia o novo arquivo para o nome do arquivo antigo
+    rename("temp.data", "cardapios.data");
+  
     printf("||                                                                                                         ||\n");
     printf("||                                                                            			                       ||\n");
     printf("||                                                                                                         ||\n");    
@@ -223,45 +291,6 @@ char tela_excluir_cardapio (lista_cardapios *Lista){
     return opc;
 }
 
-
-
-// Função para salvar as informações do cardápio
-void salvar_cardapios(lista_cardapios *Lista) {
-  // Abre o arquivo texto
-  FILE *arquivo = fopen("cardapios.txt", "wt");
-
-  // Verifica se o arquivo foi aberto com sucesso
-  if (arquivo == NULL) {
-    printf("Erro ao abrir o arquivo!\n");
-    return;
-  }
-
-  // Grava as informações no arquivo
-  for (int i = 0; i < Lista->qtd_cardapios; i++) {
-    if (Lista->cardapios[i].estatos == 0) {
-      fwrite(&Lista->cardapios[i], sizeof(cardapio), 1, arquivo);
-    }
-  }
-  // Fecha o arquivo
-  fclose(arquivo);
-}
-
-// Função para ler as informações do arquivo 
-void carregar_cardapios(lista_cardapios *Lista) {
-  // Abre o arquivo texto
-  FILE *arquivo = fopen("cardapios.txt", "rt");
-
-  // Verifica se o arquivo foi aberto com sucesso
-  if (arquivo == NULL) {
-    printf("Erro ao abrir o arquivo!\n");
-    return;
-  }
-
-  Lista->qtd_cardapios = fread(Lista->cardapios, sizeof(cardapio), 100, arquivo);
-
-  // Fecha o arquivo
-  fclose(arquivo);
-}
 
 void substituir_caractere(char* str, char procurar, char substituir){
     char *posicao_atual = strchr(str,procurar);

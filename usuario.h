@@ -17,25 +17,15 @@ struct usuario {
 
 typedef struct usuario usuario;
 
-struct lista_usuarios {
-  usuario usuarios[100];
-  int qtd_usuarios;
-};
-
-typedef struct lista_usuarios lista_usuarios;
 
 char menu_inf_usuario();
-char tela_dados_pessoais(lista_usuarios *Lista, usuario *Usuario);
-char tela_restricao_alimentar ();
-char tela_novo_usuario(lista_usuarios *Lista, usuario *Usuario);
-char tela_mudar_usuario(lista_usuarios *Lista);
-char tela_atualizar_usuario (lista_usuarios *Lista, usuario *Usuario);
-char tela_excluir_usuario (lista_usuarios *Lista);
+void tela_buscar_paciente(usuario *Usuario);
+char tela_novo_usuario(usuario *Usuario);
+char tela_lista_pacientes();
+char tela_atualizar_paciente (usuario *Usuario);
+char tela_excluir_paciente (usuario *Usuario);
 void modulo_usuario();
-void salvar_usuarios(lista_usuarios *Lista);
-void carregar_usuarios(lista_usuarios *Lista);
 void imprimir_usuario(usuario u);
 float imc_usuario(usuario u);
-
+int cpf_existe_no_arquivo(char *cpf);
 #endif
-
