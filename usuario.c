@@ -127,7 +127,7 @@ char tela_novo_usuario (usuario *Usuario){
       fgets(Usuario->cpf, sizeof(Usuario->cpf), stdin);
       remover_nova_linha(Usuario->cpf);
     
-      int cpf_existe = cpf_existe_no_arquivo(Usuario->cpf);
+      cpf_existe = cpf_existe_no_arquivo(Usuario->cpf);
     
       if (cpf_existe) {
           printf("\033[31m CPF JA EXISTE! \033[0m\n");
