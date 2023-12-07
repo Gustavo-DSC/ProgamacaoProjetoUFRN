@@ -112,11 +112,11 @@ int valida_atividade_fisica(char *str) {
     }
 
     // Compara a string com os níveis de atividade física permitidos
-    if (strcmp(str, "sedentário") == 0 ||
-        strcmp(str, "leve") == 0 ||
-        strcmp(str, "moderado") == 0 ||
-        strcmp(str, "intenso") == 0 ||
-        strcmp(str, "muito intenso") == 0) {
+    if (strcmp(str, "1") == 0 ||
+        strcmp(str, "2") == 0 ||
+        strcmp(str, "3") == 0 ||
+        strcmp(str, "4") == 0 ||
+        strcmp(str, "5") == 0) {
         return 1;
     } else {
         return 0;

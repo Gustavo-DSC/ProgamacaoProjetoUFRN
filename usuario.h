@@ -26,6 +26,9 @@ char tela_atualizar_paciente (usuario *Usuario);
 char tela_excluir_paciente (usuario *Usuario);
 void modulo_usuario();
 void imprimir_usuario(usuario u);
+void imprimir_usuario_tab(usuario u);
+void imprimir_cab_tab();
 float imc_usuario(usuario u);
 int cpf_existe_no_arquivo(char *cpf);
+void remover_nova_linha(char *str);
 #endif

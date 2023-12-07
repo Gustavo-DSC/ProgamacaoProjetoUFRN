@@ -125,7 +125,7 @@ char tela_novo_usuario (usuario *Usuario){
       do {
       printf("   CPF: ");    /// CPF do paciente
       fgets(Usuario->cpf, sizeof(Usuario->cpf), stdin);
-      Usuario->cpf[strcspn(Usuario->cpf, "\n")] = 0;
+      remover_nova_linha(Usuario->cpf);
     
       int cpf_existe = cpf_existe_no_arquivo(Usuario->cpf);
     
@@ -144,6 +144,7 @@ char tela_novo_usuario (usuario *Usuario){
         do {
           printf("   NOME: ");    /// Nome do usuário
           fgets(Usuario->nome, sizeof(Usuario->nome), stdin);
+          remover_nova_linha(Usuario->nome);
           if (valida_nome(Usuario->nome) != 0){
             printf("\033[32m NOME VALIDO \033[0m\n");
           }
@@ -167,6 +168,7 @@ char tela_novo_usuario (usuario *Usuario){
         do {
           printf("   SEXO: ");  /// Sexo 
           fgets(Usuario->sexo, sizeof(Usuario->sexo), stdin);
+          remover_nova_linha(Usuario->sexo);
           if (valida_sexo(Usuario->sexo) != 0){
             printf("\033[32m SEXO VALIDO \033[0m\n");
           }
@@ -179,6 +181,7 @@ char tela_novo_usuario (usuario *Usuario){
         do {
           printf("   E-MAIL: "); /// Email
           fgets(Usuario->email, sizeof(Usuario->email), stdin);
+          remover_nova_linha(Usuario->email);
           if (valida_email(Usuario->email) != 0){
             printf("\033[32m EMAIL VALIDO \033[0m\n");
           }
@@ -214,7 +217,7 @@ char tela_novo_usuario (usuario *Usuario){
   
         do {
           printf("   FREQUÊNCIA DE ATIVIDADE FÍSICA\n");  // nivel de atividade física
-          printf("   sedentário | leve | moderado | intenso | muito intenso  \n");
+          printf("   (1)sedentário (2)leve (3)moderado (4)intenso (5)muito intenso  \n");
           fgets(Usuario->ativ_fisica, sizeof(Usuario->ativ_fisica), stdin);
           if (valida_atividade_fisica(Usuario->ativ_fisica) != 0){
             printf("\033[32m ATIVIDADE FÍSICA VALIDA \033[0m\n");
@@ -266,40 +269,45 @@ char tela_lista_pacientes (){
   printf("    ESCOLHA A OPÇÃO DE LISTAGEM: ");scanf("%c", &slc);
   switch(slc) {
     case '1':
+      imprimir_cab_tab();
       // Filtro para todos os pacientes
-      while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        imprimir_usuario(Usuario);
+      while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {    
+        imprimir_usuario_tab(Usuario);
       }
       break;
     case '2':
+      imprimir_cab_tab();
       // Filtro para pacientes com alto nível de obesidade
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        if (Usuario.imc >= 30) { // IMC >= 30 é considerado obesidade
-          imprimir_usuario(Usuario);
+        if (Usuario.imc >= 30) { // IMC >= 30 é considerado obesidade    
+          imprimir_usuario_tab(Usuario);
         }
       }
       break;
     case '3':
+      imprimir_cab_tab();
       // Filtro para pacientes com alto nível de magreza
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        if (Usuario.imc < 18.5) { // IMC < 18.5 é considerado magreza
-          imprimir_usuario(Usuario);
+        if (Usuario.imc < 18.5) { // IMC < 18.5 é considerado magreza    
+          imprimir_usuario_tab(Usuario);
         }
       }
       break;
     case '4':
+      imprimir_cab_tab();
       // Filtro para pacientes do sexo masculino
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
         if (strcmp(Usuario.sexo, "masculino") == 0) {
-          imprimir_usuario(Usuario);
+          imprimir_usuario_tab(Usuario);
         }
       }
       break;
     case '5':
+      imprimir_cab_tab();
       // Filtro para pacientes do sexo feminino
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
         if (strcmp(Usuario.sexo, "feminino") == 0) {
-          imprimir_usuario(Usuario);
+          imprimir_usuario_tab(Usuario);
         }
       }
       break;
@@ -338,7 +346,7 @@ char tela_atualizar_paciente(usuario *Usuario){
     printf("||\n");
     printf("||          PESQUISAR POR CPF: "); 
     fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
-    buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
+    remover_nova_linha(buscar_cpf);
   
     // Lê os usuários do arquivo um por um
     while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
@@ -368,6 +376,7 @@ char tela_atualizar_paciente(usuario *Usuario){
             do {
               printf("   E-MAIL: "); /// Email
               fgets(Usuario->email, sizeof(Usuario->email), stdin);
+              remover_nova_linha(Usuario->email);
               if (valida_email(Usuario->email) != 0){
                 printf("\033[32m EMAIL VALIDO \033[0m\n");
               }
@@ -421,7 +430,7 @@ char tela_atualizar_paciente(usuario *Usuario){
           if (opc == 's' || opc == 'S') {
             do {
               printf("   FREQUÊNCIA DE ATIVIDADE FÍSICA\n");  // nivel de atividade física
-              printf("   sedentário | leve | moderado | intenso | muito intenso\n");
+              printf("   (1)sedentário (2)leve (3)moderado (4)intenso (5)muito intenso  \n");
               fgets(Usuario->ativ_fisica, sizeof(Usuario->ativ_fisica), stdin);
               if (valida_atividade_fisica(Usuario->ativ_fisica) != 0){
                 printf("\033[32m ATIVIDADE FÍSICA VALIDA \033[0m\n");
@@ -465,7 +474,7 @@ char tela_excluir_paciente(usuario *Usuario){
     printf("||                                                                                                         ||\n");    
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||    ==============================    ATUALIZAR INFORMAÇÔES PACIENTE    =============================    ||\n");
+    printf("||    =====================================    EXCLUIR PACIENTE    ====================================    ||\n");
     printf("||\n");
     printf("||          PESQUISAR POR CPF: "); 
     fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
@@ -529,16 +538,37 @@ char tela_excluir_paciente(usuario *Usuario){
 
 void imprimir_usuario(usuario u) {
     printf("\n");
-    printf("\033[32m   NOME:\033[0m %s", u.nome);
-    printf("   IDADE: %d\n", u.idade);
-    printf("   SEXO: %s\n", u.sexo);    
-    printf("   E-MAIL: %s\n", u.email);
-    printf("   PESO: %.1f\n", u.peso);
-    printf("   ALTURA: %.2f\n", u.altura);
-    printf("   IMC: %.2f\n", u.imc);
-    printf("   NECESSIDADE CALORICA: %.2f\n", u.nec_cal);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |  \033[32m NOME:\033[0m %-53s|\n", u.nome);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   E-MAIL: %-51s|\n", u.email);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   IDADE: %-52d|\n", u.idade);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   SEXO: %-53s|\n", u.sexo);    
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   PESO: %-53.1f|\n", u.peso);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   ALTURA: %-51.2f|\n", u.altura);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   IMC: %-54.2f|\n", u.imc);
+    printf("    +--------------------------------------------------------------+\n");
+    printf("    |   NECESSIDADE CALORICA: %-37.2f|\n", u.nec_cal);
+    printf("    +--------------------------------------------------------------+\n");
 }
 
+
+void imprimir_cab_tab() {
+  printf("    +----------------------+---------------------------------------+--------------------------------------+\n");
+  printf("    | CPF:                 | Nome:                                 | E-mail:                              |\n");
+  printf("    +----------------------+---------------------------------------+--------------------------------------+\n");
+}
+
+void imprimir_usuario_tab(usuario u) {
+    
+    printf("    | \033[32m%-18s\033[0m   | %-36s  | %-37s| \n", u.cpf, u.nome, u.email);
+    printf("    +----------------------+---------------------------------------+--------------------------------------+\n");
+}
 
 float imc_usuario(usuario u) {
   u.imc = u.peso / (u.altura * u.altura);
@@ -568,4 +598,8 @@ int cpf_existe_no_arquivo(char *cpf) {
     }
     fclose(arquivo);
     return 0;  // Retorna falso se o CPF não existir
+}
+
+void remover_nova_linha(char *str) {
+    str[strcspn(str, "\n")] = 0;
 }

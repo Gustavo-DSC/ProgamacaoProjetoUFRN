@@ -101,31 +101,31 @@ char tela_imc_cal (usuario *Usuario){
           fwrite(Usuario, sizeof(usuario), 1, arquivo);
           fseek(arquivo, 0, SEEK_CUR);
         }
-        if (strcmp(Usuario->ativ_fisica, "sedentário") == 0){
+        if (strcmp(Usuario->ativ_fisica, "1") == 0){
           Usuario->nec_cal = Usuario->nec_cal * 1.2;
           fseek(arquivo, -sizeof(usuario), SEEK_CUR);
           fwrite(Usuario, sizeof(usuario), 1, arquivo);
           fseek(arquivo, 0, SEEK_CUR);
         }
-        else if (strcmp(Usuario->ativ_fisica, "leve") == 0){
+        else if (strcmp(Usuario->ativ_fisica, "2") == 0){
           Usuario->nec_cal = Usuario->nec_cal * 1.375;
           fseek(arquivo, -sizeof(usuario), SEEK_CUR);
           fwrite(Usuario, sizeof(usuario), 1, arquivo);
           fseek(arquivo, 0, SEEK_CUR);
         }
-        else if (strcmp(Usuario->ativ_fisica, "moderado") == 0){
+        else if (strcmp(Usuario->ativ_fisica, "3") == 0){
           Usuario->nec_cal = Usuario->nec_cal * 1.55;
           fseek(arquivo, -sizeof(usuario), SEEK_CUR);
           fwrite(Usuario, sizeof(usuario), 1, arquivo);
           fseek(arquivo, 0, SEEK_CUR);
         }
-        else if (strcmp(Usuario->ativ_fisica, "intenso" ) == 0){
+        else if (strcmp(Usuario->ativ_fisica, "4" ) == 0){
           Usuario->nec_cal = Usuario->nec_cal * 1.725;
           fseek(arquivo, -sizeof(usuario), SEEK_CUR);
           fwrite(Usuario, sizeof(usuario), 1, arquivo);
           fseek(arquivo, 0, SEEK_CUR);
         }
-        else if (strcmp(Usuario->ativ_fisica, "muito intenso" ) == 0){
+        else if (strcmp(Usuario->ativ_fisica, "5" ) == 0){
           Usuario->nec_cal = Usuario->nec_cal * 1.9;
           fseek(arquivo, -sizeof(usuario), SEEK_CUR);
           fwrite(Usuario, sizeof(usuario), 1, arquivo);
@@ -192,8 +192,6 @@ char tela_cardapio_peso(){
     return opc;
 
 }
-
-
 
 
 char tela_cardapio_nutricional(cardapio *CardapioParam, usuario *UsuarioParam){
