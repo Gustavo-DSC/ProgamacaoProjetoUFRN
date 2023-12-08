@@ -231,14 +231,15 @@ char tela_novo_usuario (usuario *Usuario){
         fwrite(Usuario, sizeof(usuario), 1, arquivo);
         // Fecha o arquivo
         fclose(arquivo);
-        }
-        printf("||\n");
-        printf("||                   0 [Voltar]\n");    
-        printf("||\n");
-        printf("||\n");
-        printf("||\n");    
-        printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-        return opc;
+      }
+      printf("||\n");
+      printf("||                   0 [Voltar]\n");    
+      printf("||\n");
+      printf("||\n");
+      printf("||\n");    
+      printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+      scanf(" %c", &opc);
+      return opc;
 }
 
 
@@ -265,6 +266,7 @@ char tela_lista_pacientes (){
   printf("||   3 [Pacientes com alto nível de magreza]                                                               ||\n");
   printf("||   4 [Pacientes do sexo masculino]                                                                       ||\n");
   printf("||   5 [Pacientes do sexo feminino]                                                                        ||\n");
+  printf("||   6 [Pacientes em ordem alfabetica]                                                                     ||\n");
   printf("\n");
   printf("    ESCOLHA A OPÇÃO DE LISTAGEM: ");scanf("%c", &slc);
   switch(slc) {
@@ -311,6 +313,10 @@ char tela_lista_pacientes (){
         }
       }
       break;
+    case '6':
+      listar_em_ordem_alfabetica(arquivo);
+      break;
+
     case '0':
       // Voltar
       break;
@@ -602,4 +608,45 @@ int cpf_existe_no_arquivo(char *cpf) {
 
 void remover_nova_linha(char *str) {
     str[strcspn(str, "\n")] = 0;
+}
+
+
+Elemento* inserir_em_ordem(Elemento* inicio, usuario dados) {
+  Elemento* novo_elemento = (Elemento*)malloc(sizeof(Elemento));
+  novo_elemento->dados = dados;
+  novo_elemento->proximo = NULL;
+
+  if (inicio == NULL || strcmp(dados.nome, inicio->dados.nome) < 0) {
+    novo_elemento->proximo = inicio;
+    return novo_elemento;
+  }
+
+  Elemento* atual = inicio;
+  while (atual->proximo != NULL && strcmp(dados.nome, atual->proximo->dados.nome) > 0) {
+    atual = atual->proximo;
+  }
+
+  novo_elemento->proximo = atual->proximo;
+  atual->proximo = novo_elemento;
+
+  return inicio;
+}
+
+void listar_em_ordem_alfabetica(FILE* arquivo) {
+  Elemento* inicio = NULL;
+  usuario Usuario;
+  while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
+    inicio = inserir_em_ordem(inicio, Usuario);
+  }
+  imprimir_cab_tab();
+  Elemento* atual = inicio;
+  while (atual != NULL) {
+    imprimir_usuario_tab(atual->dados);
+    atual = atual->proximo;
+  }
+  while (inicio != NULL) {
+    Elemento* temp = inicio;
+    inicio = inicio->proximo;
+    free(temp);
+  }
 }
