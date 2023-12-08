@@ -227,6 +227,10 @@ char tela_novo_usuario (usuario *Usuario){
           }
         } while (valida_atividade_fisica(Usuario->ativ_fisica) == 0);
         Usuario->imc = imc_usuario(*Usuario);
+        // Grava o paciente no arquivo
+        fwrite(Usuario, sizeof(usuario), 1, arquivo);
+        // Fecha o arquivo
+        fclose(arquivo);
         }
         printf("||\n");
         printf("||                   0 [Voltar]\n");    
@@ -234,12 +238,8 @@ char tela_novo_usuario (usuario *Usuario){
         printf("||\n");
         printf("||\n");    
         printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-        // Grava o paciente no arquivo
-        fwrite(Usuario, sizeof(usuario), 1, arquivo);
-        // Fecha o arquivo
-        fclose(arquivo);
         return opc;
-      }
+}
 
 
 
