@@ -89,6 +89,9 @@ void tela_buscar_paciente(usuario *Usuario){
     while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
         // Compara o CPF do usuário com o CPF buscado
         if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
+            if (Usuario->estatos == 1) {
+              printf("             PACIENTE INATIVO\n");
+            }
             imprimir_usuario(*Usuario);
             break;
         }
@@ -130,26 +133,34 @@ char tela_novo_usuario (usuario *Usuario){
       cpf_existe = cpf_existe_no_arquivo(Usuario->cpf);
     
       if (cpf_existe) {
-          printf("\033[31m CPF JA EXISTE! \033[0m\n");
+          printf("\033[31m   CPF JA EXISTE! \033[0m\n");
       }
       else if (valida_cpf(Usuario->cpf) != 0){
-          printf("\033[32m CPF VALIDO \033[0m\n");
+          printf("\033[32m   CPF VALIDO \033[0m\n");
       }
       else {
-          printf("\033[31m CPF INVALIDO! \033[0m\n");
+          printf("\033[31m   CPF INVALIDO! \033[0m\n");
+          printf("   deseja continuar com o cadastro? (s/n) ");
+          scanf(" %c", &opc);
+          getchar();
+          if (opc == 'n' || opc == 'N') {
+            return 0;
+            break;
+          }
       }
       } while (valida_cpf(Usuario->cpf) == 0 || cpf_existe == 1);
 
       if (cpf_existe == 0) {
+        Usuario->estatos = 0;
         do {
           printf("   NOME: ");    /// Nome do usuário
           fgets(Usuario->nome, sizeof(Usuario->nome), stdin);
           remover_nova_linha(Usuario->nome);
           if (valida_nome(Usuario->nome) != 0){
-            printf("\033[32m NOME VALIDO \033[0m\n");
+            printf("\033[32m   NOME VALIDO \033[0m\n");
           }
           else {
-            printf("\033[31m NOME INVALIDO! \033[0m\n");
+            printf("\033[31m   NOME INVALIDO! \033[0m\n");
           }
         } while (valida_nome(Usuario->nome) == 0);
   
@@ -157,10 +168,10 @@ char tela_novo_usuario (usuario *Usuario){
           printf("   IDADE: ");   /// Idade do usuário
           scanf("%d", &Usuario->idade); getchar();
           if (valida_idade(Usuario->idade) != 0){
-            printf("\033[32m IDADE VALIDO \033[0m\n");
+            printf("\033[32m   IDADE VALIDO \033[0m\n");
           }
           else {
-            printf("\033[31m IDADE INVALIDO! \033[0m\n");
+            printf("\033[31m   IDADE INVALIDO! \033[0m\n");
           }
         } while (valida_idade(Usuario->idade) == 0);
   
@@ -170,10 +181,10 @@ char tela_novo_usuario (usuario *Usuario){
           fgets(Usuario->sexo, sizeof(Usuario->sexo), stdin);
           remover_nova_linha(Usuario->sexo);
           if (valida_sexo(Usuario->sexo) != 0){
-            printf("\033[32m SEXO VALIDO \033[0m\n");
+            printf("\033[32m   SEXO VALIDO \033[0m\n");
           }
           else {
-            printf("\033[31m SEXO INVALIDO! \033[0m\n");
+            printf("\033[31m   SEXO INVALIDO! \033[0m\n");
           }
         } while (valida_sexo(Usuario->sexo) == 0);
   
@@ -183,10 +194,10 @@ char tela_novo_usuario (usuario *Usuario){
           fgets(Usuario->email, sizeof(Usuario->email), stdin);
           remover_nova_linha(Usuario->email);
           if (valida_email(Usuario->email) != 0){
-            printf("\033[32m EMAIL VALIDO \033[0m\n");
+            printf("\033[32m   EMAIL VALIDO \033[0m\n");
           }
           else {
-            printf("\033[31m EMAIL INVALIDO! \033[0m\n");
+            printf("\033[31m   EMAIL INVALIDO! \033[0m\n");
           }
         } while (valida_email(Usuario->email) == 0);
   
@@ -195,10 +206,10 @@ char tela_novo_usuario (usuario *Usuario){
           printf("   PESO: ");   /// Peso do usuário
           scanf("%f", &Usuario->peso); getchar();
           if (valida_peso(Usuario->peso) != 0){
-            printf("\033[32m PESO VALIDO \033[0m\n");
+            printf("\033[32m   PESO VALIDO \033[0m\n");
           }
           else {
-            printf("\033[31m PESO INVALIDO! \033[0m\n");
+            printf("\033[31m   PESO INVALIDO! \033[0m\n");
           }
         } while (valida_peso(Usuario->peso) == 0);
   
@@ -207,10 +218,10 @@ char tela_novo_usuario (usuario *Usuario){
           printf("   ALTURA: "); /// Altura do usuário
           scanf("%f", &Usuario->altura); getchar();
           if (valida_altura(Usuario->altura) != 0){
-            printf("\033[32m ALTURA VALIDO \033[0m\n");
+            printf("\033[32m   ALTURA VALIDO \033[0m\n");
           }
           else {
-            printf("\033[31m ALTURA INVALIDO! \033[0m\n");
+            printf("\033[31m   ALTURA INVALIDO! \033[0m\n");
           }
         } while (valida_altura(Usuario->altura) == 0);
   
@@ -220,10 +231,10 @@ char tela_novo_usuario (usuario *Usuario){
           printf("   (1)sedentário (2)leve (3)moderado (4)intenso (5)muito intenso  \n");
           fgets(Usuario->ativ_fisica, sizeof(Usuario->ativ_fisica), stdin);
           if (valida_atividade_fisica(Usuario->ativ_fisica) != 0){
-            printf("\033[32m ATIVIDADE FÍSICA VALIDA \033[0m\n");
+            printf("\033[32m   ATIVIDADE FÍSICA VALIDA \033[0m\n");
           }
           else {
-            printf("\033[31m ATIVIDADE FÍSICA INVALIDA! \033[0m\n");
+            printf("\033[31m   ATIVIDADE FÍSICA INVALIDA! \033[0m\n");
           }
         } while (valida_atividade_fisica(Usuario->ativ_fisica) == 0);
         Usuario->imc = imc_usuario(*Usuario);
@@ -255,6 +266,8 @@ char tela_lista_pacientes (){
 
   char opc, slc;
   usuario Usuario;
+  int found;
+  
   system("clear||cls");
   printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
   printf("||                                                                                                         ||\n");    
@@ -273,44 +286,66 @@ char tela_lista_pacientes (){
     case '1':
       imprimir_cab_tab();
       // Filtro para todos os pacientes
-      while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {    
-        imprimir_usuario_tab(Usuario);
+      while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
+        if (Usuario.estatos == 0) {
+          imprimir_usuario_tab(Usuario);
+          found = 1; // Paciente encontrado
+        }
+      }
+      if (!found) { // Se nenhum paciente foi encontrado
+        printf("\033[31m   NENHUM PACIENTE ENCONTRADO!\033[0m\n");
       }
       break;
     case '2':
       imprimir_cab_tab();
       // Filtro para pacientes com alto nível de obesidade
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        if (Usuario.imc >= 30) { // IMC >= 30 é considerado obesidade    
+        if (Usuario.imc >= 30 && Usuario.estatos == 0) { // IMC >= 30 é considerado obesidade    
           imprimir_usuario_tab(Usuario);
+          found = 1; // Paciente encontrado
         }
+      }
+      if (!found) { // Se nenhum paciente foi encontrado
+        printf("\033[31m   NENHUM PACIENTE ENCONTRADO!\033[0m\n");
       }
       break;
     case '3':
       imprimir_cab_tab();
       // Filtro para pacientes com alto nível de magreza
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        if (Usuario.imc < 18.5) { // IMC < 18.5 é considerado magreza    
+        if (Usuario.imc < 18.5 && Usuario.estatos == 0) { // IMC < 18.5 é considerado magreza    
           imprimir_usuario_tab(Usuario);
+          found = 1; // Paciente encontrado
         }
+      }
+      if (!found) { // Se nenhum paciente foi encontrado
+        printf("\033[31m   NENHUM PACIENTE ENCONTRADO!\033[0m\n");
       }
       break;
     case '4':
       imprimir_cab_tab();
       // Filtro para pacientes do sexo masculino
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        if (strcmp(Usuario.sexo, "masculino") == 0) {
+        if (strcmp(Usuario.sexo, "masculino") == 0 && Usuario.estatos == 0) {
           imprimir_usuario_tab(Usuario);
+          found = 1; // Paciente encontrado
         }
+      }
+      if (!found) { // Se nenhum paciente foi encontrado
+        printf("\033[31m   NENHUM PACIENTE ENCONTRADO!\033[0m\n");
       }
       break;
     case '5':
       imprimir_cab_tab();
       // Filtro para pacientes do sexo feminino
       while (fread(&Usuario, sizeof(usuario), 1, arquivo)) {
-        if (strcmp(Usuario.sexo, "feminino") == 0) {
+        if (strcmp(Usuario.sexo, "feminino") == 0 && Usuario.estatos == 0) {
           imprimir_usuario_tab(Usuario);
+          found = 1; // Paciente encontrado
         }
+      }
+      if (!found) { // Se nenhum paciente foi encontrado
+        printf("\033[31m   NENHUM PACIENTE ENCONTRADO!\033[0m\n");
       }
       break;
     case '6':
@@ -321,7 +356,7 @@ char tela_lista_pacientes (){
       // Voltar
       break;
     default:
-      printf("\nOpção inválida. Tente novamente.\n");
+      printf("\033[31m   OPCÇÃO INVALIDA TENTE NOVAMENTE!\033[0m\n");
       break;
   }
   fclose(arquivo);
@@ -357,26 +392,26 @@ char tela_atualizar_paciente(usuario *Usuario){
     // Lê os usuários do arquivo um por um
     while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
         // Compara o CPF do usuário com o CPF buscado
-        if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
+        if (strcmp(Usuario->cpf, buscar_cpf) == 0 && Usuario->estatos == 0) {
           
           // Pergunta se o usuário quer atualizar a idade
-          printf("Deseja atualizar a idade? (s/n): ");
+          printf("   Deseja atualizar a idade? (s/n): ");
           scanf(" %c", &opc); getchar();
           if (opc == 's' || opc == 'S') {
             do {
               printf("   IDADE: ");   /// Idade do usuário
               scanf("%d", &Usuario->idade); getchar();
               if (valida_idade(Usuario->idade) != 0){
-                printf("\033[32m IDADE VALIDO \033[0m\n");
+                printf("\033[32m   IDADE VALIDO \033[0m\n");
               }
               else {
-                printf("\033[31m IDADE INVALIDO! \033[0m\n");
+                printf("\033[31m   IDADE INVALIDO! \033[0m\n");
               }
             } while (valida_idade(Usuario->idade) == 0);
           }
 
           // Pergunta se o usuário quer atualizar o email
-          printf("Deseja atualizar o email? (s/n): ");
+          printf("   Deseja atualizar o email? (s/n): ");
           scanf(" %c", &opc); getchar();
           if (opc == 's' || opc == 'S') {
             do {
@@ -384,10 +419,10 @@ char tela_atualizar_paciente(usuario *Usuario){
               fgets(Usuario->email, sizeof(Usuario->email), stdin);
               remover_nova_linha(Usuario->email);
               if (valida_email(Usuario->email) != 0){
-                printf("\033[32m EMAIL VALIDO \033[0m\n");
+                printf("\033[32m   EMAIL VALIDO \033[0m\n");
               }
               else {
-                printf("\033[31m EMAIL INVALIDO! \033[0m\n");
+                printf("\033[31m   EMAIL INVALIDO! \033[0m\n");
               }
             } while (valida_email(Usuario->email) == 0);
             fseek(arquivo, -sizeof(usuario), SEEK_CUR);
@@ -395,17 +430,17 @@ char tela_atualizar_paciente(usuario *Usuario){
             fseek(arquivo, 0, SEEK_CUR);
           }
           
-          printf("Deseja atualizar o peso? (s/n): ");
+          printf("   Deseja atualizar o peso? (s/n): ");
           scanf(" %c", &opc); getchar();
           if (opc == 's' || opc == 'S') {
             do {
               printf("   PESO: ");   /// Peso do usuário
               scanf("%f", &Usuario->peso); getchar();
               if (valida_peso(Usuario->peso) != 0){
-                printf("\033[32m PESO VALIDO \033[0m\n");
+                printf("\033[32m   PESO VALIDO \033[0m\n");
               }
               else {
-                printf("\033[31m PESO INVALIDO! \033[0m\n");
+                printf("\033[31m   PESO INVALIDO! \033[0m\n");
               }
             } while (valida_peso(Usuario->peso) == 0);
             fseek(arquivo, -sizeof(usuario), SEEK_CUR);
@@ -413,17 +448,17 @@ char tela_atualizar_paciente(usuario *Usuario){
             fseek(arquivo, 0, SEEK_CUR);
           }
 
-          printf("Deseja atualizar o altura? (s/n): ");
+          printf("   Deseja atualizar o altura? (s/n): ");
           scanf(" %c", &opc); getchar();
           if (opc == 's' || opc == 'S') {
             do {
               printf("   ALTURA: "); /// Altura do usuário
               scanf("%f", &Usuario->altura); getchar();
               if (valida_altura(Usuario->altura) != 0){
-                printf("\033[32m ALTURA VALIDO \033[0m\n");
+                printf("\033[32m   ALTURA VALIDO \033[0m\n");
               }
               else {
-                printf("\033[31m ALTURA INVALIDO! \033[0m\n");
+                printf("\033[31m   ALTURA INVALIDO! \033[0m\n");
               }
             } while (valida_altura(Usuario->altura) == 0);
             fseek(arquivo, -sizeof(usuario), SEEK_CUR);
@@ -431,7 +466,7 @@ char tela_atualizar_paciente(usuario *Usuario){
             fseek(arquivo, 0, SEEK_CUR);
           }
           
-          printf("Deseja atualizar o atividade física? (s/n): ");
+          printf("   Deseja atualizar o atividade física? (s/n): ");
           scanf(" %c", &opc); getchar();
           if (opc == 's' || opc == 'S') {
             do {
@@ -439,10 +474,10 @@ char tela_atualizar_paciente(usuario *Usuario){
               printf("   (1)sedentário (2)leve (3)moderado (4)intenso (5)muito intenso  \n");
               fgets(Usuario->ativ_fisica, sizeof(Usuario->ativ_fisica), stdin);
               if (valida_atividade_fisica(Usuario->ativ_fisica) != 0){
-                printf("\033[32m ATIVIDADE FÍSICA VALIDA \033[0m\n");
+                printf("\033[32m   ATIVIDADE FÍSICA VALIDA \033[0m\n");
               }
               else {
-                printf("\033[31m ATIVIDADE FÍSICA INVALIDA! \033[0m\n");
+                printf("\033[31m   ATIVIDADE FÍSICA INVALIDA! \033[0m\n");
               }
             } while (valida_atividade_fisica(Usuario->ativ_fisica) == 0);
             fseek(arquivo, -sizeof(usuario), SEEK_CUR);
@@ -451,16 +486,20 @@ char tela_atualizar_paciente(usuario *Usuario){
           }
           break;
         }
+        else if (Usuario->estatos == 1){
+          printf("\033[31m   PACIENTE INATIVO! \033[0m\n");
+        }
+        else{
+        printf("\033[31m   PACIENTE NÃO ENCONTRADO! \033[0m\n");
+        }
     }
     // Fecha o arquivo
     fclose(arquivo);
   
-    printf("||\n");
-    printf("||                   0 [Voltar]\n");    
-    printf("||\n");
-    printf("||\n");
-    printf("||\n");    
-    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+  printf("||                                                                                                         ||\n");
+  printf("||       0 [Voltar]                                                                                        ||\n");
+  printf("||                                                                                                         ||\n");
+  printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     return opc;
 }
 
@@ -472,8 +511,9 @@ char tela_excluir_paciente(usuario *Usuario){
       printf("Erro ao abrir o arquivo!\n");
       return 0;
     }
-  
+
     char opc;
+    int slc;
     char buscar_cpf[14];
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
@@ -481,64 +521,93 @@ char tela_excluir_paciente(usuario *Usuario){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||    =====================================    EXCLUIR PACIENTE    ====================================    ||\n");
-    printf("||\n");
-    printf("||          PESQUISAR POR CPF: "); 
-    fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
-    buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
-  
-    // Lê os usuários do arquivo um por um
-    while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
-      // Compara o CPF do usuário com o CPF buscado
-      if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
-        // Pergunta se o usuário quer excluir o usuário
-        printf("Deseja realmente excluir este usuario? S/N \n");
-        do{
-          scanf( "%c", &opc);getchar();
-          if (opc == 'S' || opc == 's') {
-            // Não copia o usuário para o novo arquivo
-          }
-          else if (opc == 'N' || opc == 'n') {
-            printf("Exclusão cancelada!\n");
-            // Copia o usuário para o novo arquivo
-            fwrite(Usuario, sizeof(usuario), 1, temp);
-          }
-        }while (opc != 'S' && opc != 's' && opc != 'N' && opc != 'n');
-      }  
-      else {
-        // Copia o usuário para o novo arquivo
-        fwrite(Usuario, sizeof(usuario), 1, temp);
+    printf("||   1 [Inativa paciente]                                                                                  ||\n");
+    printf("||   2 [Exclusão física de paciente]                                                                       ||\n");
+    printf("||   3 [Ativar paciente]                                                                                   ||\n");
+    printf("||   4 [Cancelar exclusão]                                                                                 ||\n");
+    do{
+      printf("\n");
+      printf("     ESCOLHA A OPÇÃO DE LISTAGEM: ");    
+      while (scanf("%d", &slc) != 1) {
+        while ((slc = getchar()) != '\n' && slc != EOF);
+        printf("     Entrada inválida. Por favor, insira um número: ");
       }
-    }
+
+      getchar();
+      if(slc == 1){
   
-    // Fecha os arquivos
+          printf("            PESQUISAR POR CPF: "); 
+          fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+          buscar_cpf[strcspn(buscar_cpf, "\n")] = 0; 
+          while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
+            if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
+              printf("            Inativação realizada!\n");
+              Usuario->estatos = 1;
+              fwrite(Usuario, sizeof(usuario), 1, temp);
+            }
+            else{
+              fwrite(Usuario, sizeof(usuario), 1, temp);
+            }
+          }
+      }
+        
+      else if(slc == 2){
+          printf("            PESQUISAR POR CPF: "); 
+          fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+          buscar_cpf[strcspn(buscar_cpf, "\n")] = 0; 
+          while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
+            if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
+              printf("            Exclusão física realizada!\n");
+            }
+            else{
+              fwrite(Usuario, sizeof(usuario), 1, temp);
+            }
+          }
+      }
+        
+      else if(slc == 3){
+          printf("            PESQUISAR POR CPF: "); 
+          fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+          buscar_cpf[strcspn(buscar_cpf, "\n")] = 0; 
+          while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
+            if (strcmp(Usuario->cpf, buscar_cpf) == 0) {
+              Usuario->estatos = 0;
+              printf("            Paciente ativado!\n");
+              fwrite(Usuario, sizeof(usuario), 1, temp);
+            }
+            else{
+              fwrite(Usuario, sizeof(usuario), 1, temp);
+            }
+          }
+      }
+        
+      else if(slc == 4){ 
+        printf("\n");
+        printf("           EXCLUSÃO CANCELADA\n");
+        while (fread(Usuario, sizeof(usuario), 1, arquivo)) {
+            fwrite(Usuario, sizeof(usuario), 1, temp);
+        }
+      }
+      else{
+        printf("           Opção inválida!\n");
+      }
+    }while(slc != 4 && slc != 1 && slc != 2 && slc != 3);
+  
     fclose(arquivo);
     fclose(temp);
-  
-    // Exclui o arquivo antigo
-    remove("usuarios.data");
-  
-    // Renomeia o novo arquivo para o nome do arquivo antigo
-    rename("temp.data", "usuarios.data");
 
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
+    remove("usuarios.data");
+    rename("temp.data", "usuarios.data");
+  
     printf("||                                                                                                         ||\n");
     printf("||       0 [Voltar]                                                                                        ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||\n");
     scanf(" %c", &opc);
+    getchar();
     return opc;
 }
+  
 
 
 
@@ -650,3 +719,4 @@ void listar_em_ordem_alfabetica(FILE* arquivo) {
     free(temp);
   }
 }
+

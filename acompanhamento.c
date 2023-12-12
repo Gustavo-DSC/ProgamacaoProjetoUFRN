@@ -93,7 +93,7 @@ char tela_avaliacao_paciente(){
     // Lê os usuários do arquivo um por um
     while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo)) {
         // Compara o CPF do usuário com o CPF buscado
-        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0) {
+        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0 && UsuarioLocal.estatos == 0) {
             strcpy(AvaliacaoLocal.data, obterData()); // obter a data atual
             strcpy(AvaliacaoLocal.cpf_avaliado, UsuarioLocal.cpf);
           
@@ -218,7 +218,7 @@ char tela_lista_avaliacao_paciente(){
     
     while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo)) {
         // Compara o CPF do usuário com o CPF buscado
-        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0) {
+        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0 && UsuarioLocal.estatos == 0) {
             // Fecha o arquivo de usuários
             fclose(arquivo);
           
@@ -251,37 +251,41 @@ char tela_lista_avaliacao_paciente(){
 }
 
 
-char tela_progreso_paciente(){
+char tela_progreso_paciente()
+{
     FILE *arquivo = fopen("usuarios.data", "rb");
     // Verifica se o arquivo está aberto
-    if (arquivo == NULL) {
+    if (arquivo == NULL)
+    {
         printf("Erro ao abrir o arquivo!\n");
         return 0;
     }
-    FILE *arquivo_acompanhamento  = fopen("avaliacao.data", "rb");
+    FILE *arquivo_acompanhamento = fopen("avaliacao.data", "rb");
     // Verifica se o arquivo está aberto
-    if (arquivo == NULL) {
+    if (arquivo == NULL)
+    {
         printf("Erro ao abrir o arquivo!\n");
         return 0;
     }
     // Aloca memória para o array de pesos
-    double* pesos = (double*) malloc(10 * sizeof(double));
-    if (pesos == NULL) {
+    double *pesos = (double *)malloc(10 * sizeof(double));
+    if (pesos == NULL)
+    {
         printf("Erro ao alocar memória!\n");
         return 0;
     }
-  
+
     int count = 0;
-  
+
     char opc;
     char buscar_cpf[14];
-  
+
     usuario UsuarioLocal;
     avaliacao AvaliacaoLocal;
-  
+
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     ==================================   PROGRESO DE PACIENTE   ===================================     ||\n");
@@ -289,51 +293,56 @@ char tela_progreso_paciente(){
     printf("||          PESQUISAR POR CPF: ");
     fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
     buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
-  
-    while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo)) {
+
+    while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo))
+    {
         // Compara o CPF do usuário com o CPF buscado
-        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0) {
+        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0 && UsuarioLocal.estatos == 0)
+        {
             // Fecha o arquivo de usuários
             fclose(arquivo);
-  
+
             printf("\n");
             printf("\033[32m   +----------------------+--------------------------------+----------+----------+------------------------+\n");
             printf("   |         DATA         |              NOME              |   PESO   |  ALTURA  |        SITUAÇÃO        |\n");
             printf("   +----------------------+--------------------------------+----------+----------+------------------------+ \033[0m\n");
             // Lê as avaliações do arquivo um por um
-            while (fread(&AvaliacaoLocal, sizeof(avaliacao), 1, arquivo_acompanhamento)) {
+            while (fread(&AvaliacaoLocal, sizeof(avaliacao), 1, arquivo_acompanhamento))
+            {
                 // Compara o CPF do usuário avaliado com o CPF buscado
-  
-                if (strcmp(AvaliacaoLocal.cpf_avaliado, buscar_cpf) == 0) {
+
+                if (strcmp(AvaliacaoLocal.cpf_avaliado, buscar_cpf) == 0)
+                {
                     // Lista a avaliação
                     lista_aval_tab(AvaliacaoLocal, UsuarioLocal);
                     pesos[count % 10] = AvaliacaoLocal.novo_peso;
                     count++;
                 }
             }
+            // Imprime os pesos das últimas 10 avaliações
+            printf("\n");
+            printf("   +------------------------------------------------------------------------------------------------------+\n");
+            printf("   +-------------------------------| GRÁFICO  Últimas 10 avaliações (peso) |------------------------------+\n");
+            printf("   |\n");
+            for (int i = count > 10 ? count % 10 : 0; i < count && i < 10; i++)
+            {
+                printf("   |  DATA: %s   ", AvaliacaoLocal.data);
+                for (int j = 0; j < (int)pesos[i] / 5; j++)
+                {
+                    printf("\033[32m|\033[0m");
+                }
+                printf("   %.2f\n", pesos[i]);
+            }
+            printf("   +------------------------------------------------------------------------------------------------------+\n");
+            // Libera a memória alocada para o array de pesos
+            free(pesos);
             // Sai do loop
             break;
         }
     }
-    // Imprime os pesos das últimas 10 avaliações
-    printf("\n");
-    printf("   +------------------------------------------------------------------------------------------------------+\n");
-    printf("   +-------------------------------| GRÁFICO  Últimas 10 avaliações (peso) |------------------------------+\n");
-    printf("   |\n");
-    for (int i = count > 10 ? count % 10 : 0; i < count && i < 10; i++) {
-      printf("   |  DATA: %s   ", AvaliacaoLocal.data);
-      for(int j = 0; j < (int)pesos[i]/5; j++) {
-          printf("\033[32m|\033[0m");
-      }
-      printf("   %.2f\n", pesos[i]);
-    }
-    printf("   +------------------------------------------------------------------------------------------------------+\n");
-    // Libera a memória alocada para o array de pesos
-    free(pesos);
-  
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
     printf("||    0 [Voltar]                                                                                           ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");

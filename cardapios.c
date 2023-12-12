@@ -69,6 +69,7 @@ char tela_adicionar_cardapio (cardapio *Cardapio){
         return 0;
     }
     char opc;
+    int resultado;
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");    
@@ -85,11 +86,13 @@ char tela_adicionar_cardapio (cardapio *Cardapio){
     printf("     	  NOME DO CARDÁPIO:");
     fgets(Cardapio->nome, sizeof(Cardapio->nome), stdin);
     Cardapio->nome[strcspn(Cardapio->nome, "\n")] = '\0';
-
-    printf("    	  OBJETIVO DO CARDÁPIO: 1(Ganhar peso) 2(Perde peso) 3(Manter peso) 4(Ganha massa muscular): "); 
-    scanf("%d", &Cardapio->objetivo); getchar();
-
-    printf("     	  DIETA DO CARDÁPIO (use ; para nova linha): \n");
+  do {
+      printf("    	  OBJETIVO DO CARDÁPIO: 1(Ganhar peso) 2(Perde peso) 3(Manter peso) 4(Ganha massa muscular): "); 
+      resultado = scanf("%d", &Cardapio->objetivo);
+      getchar(); // Limpa o buffer
+  } while (resultado != 1 || Cardapio->objetivo < 1 || Cardapio->objetivo > 4);
+  
+    printf("     	  DIETA DO CARDÁPIO (digite FIM para termina): \n");
     char dieta[2000] = "";
     char linha[200];
     int contador = 0;
@@ -111,9 +114,11 @@ char tela_adicionar_cardapio (cardapio *Cardapio){
     strncpy(Cardapio->dieta_cardapio, dieta, sizeof(Cardapio->dieta_cardapio) - 1);
     Cardapio->dieta_cardapio[sizeof(Cardapio->dieta_cardapio) - 1] = '\0'; // Garante que a string é terminada
   
-    printf("\n");
-    printf("     	  CALORIAS DO CARDÁPIO: ");
-    scanf("%f", &Cardapio->cal_cardapio); getchar();
+    do {
+        printf("     	  CALORIAS DO CARDÁPIO: ");
+        resultado = scanf("%f", &Cardapio->cal_cardapio);
+        getchar(); // Limpa o buffer
+    } while (resultado != 1);
     fwrite(Cardapio, sizeof(cardapio), 1, arquivo);
     fclose(arquivo);
   
@@ -264,6 +269,7 @@ char tela_buscar_cardapio (){
             CardapioLocal.cal_cardapio);
           printf("   +----------------------+--------------------------------+---------------------------+------------------+\n");
           printf("\n    DIETA DO CARDÁPIO: \n");
+          printf("   ========================================================================================================\n");
           char *dieta = CardapioLocal.dieta_cardapio;
           char *linha = strtok(dieta, "\n");
   
@@ -271,6 +277,7 @@ char tela_buscar_cardapio (){
               printf("    %s%s\n", "", linha);  // Adiciona 6 espaços antes de cada linha
               linha = strtok(NULL, "\n");
           }
+          printf("   ========================================================================================================\n");
       }
     }
 
@@ -369,19 +376,21 @@ char tela_editar_cardapio (cardapio *Cardapio){
 }
 
 
-char tela_excluir_cardapio (cardapio *Cardapio){
+char tela_excluir_cardapio(cardapio *Cardapio)
+{
     FILE *arquivo = fopen("cardapios.data", "rb");
     FILE *temp = fopen("temp.data", "wb"); // Arquivo temporário
     // Verifica se o arquivo está aberto
-    if (arquivo == NULL) {
-      printf("Erro ao abrir o arquivo!\n");
-      return 0;
+    if (arquivo == NULL)
+    {
+        printf("Erro ao abrir o arquivo!\n");
+        return 0;
     }
     char opc;
     char buscar_cod[11];
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("||     =====================================   EXCLUIR CARDÁPIO   ====================================     ||\n");
@@ -390,43 +399,50 @@ char tela_excluir_cardapio (cardapio *Cardapio){
     fgets(buscar_cod, sizeof(buscar_cod), stdin);
 
     // Lê os cardapios do arquivo um por um
-    while (fread(Cardapio, sizeof(cardapio), 1, arquivo)) {
-      // Compara o CPF do cardapio com o CPF buscado
-      if (strcmp(Cardapio->cod_cardapio, buscar_cod) == 0) {
-        // Pergunta se o cardapio quer excluir o cardapio
-        printf("Deseja realmente excluir este cardapio? S/N \n");
-        do{
-          scanf( "%c", &opc);getchar();
-          if (opc == 'S' || opc == 's') {
-            // Não copia o cardapio para o novo arquivo
-            printf("Cardápio excluido!\n");
-          }
-          else if (opc == 'N' || opc == 'n') {
-            printf("Exclusão cancelada!\n");
+    while (fread(Cardapio, sizeof(cardapio), 1, arquivo))
+    {
+        // Compara o CPF do cardapio com o CPF buscado
+        if (strcmp(Cardapio->cod_cardapio, buscar_cod) == 0)
+        {
+            // Pergunta se o cardapio quer excluir o cardapio
+            printf("Deseja realmente excluir este cardapio? S/N \n");
+            do
+            {
+                scanf("%c", &opc);
+                getchar();
+                if (opc == 'S' || opc == 's')
+                {
+                    // Não copia o cardapio para o novo arquivo
+                    printf("Cardápio excluido!\n");
+                }
+                else if (opc == 'N' || opc == 'n')
+                {
+                    printf("Exclusão cancelada!\n");
+                    // Copia o cardapio para o novo arquivo
+                    fwrite(Cardapio, sizeof(cardapio), 1, temp);
+                }
+            } while (opc != 'S' && opc != 's' && opc != 'N' && opc != 'n');
+        }
+        else
+        {
             // Copia o cardapio para o novo arquivo
             fwrite(Cardapio, sizeof(cardapio), 1, temp);
-          }
-        }while (opc != 'S' && opc != 's' && opc != 'N' && opc != 'n');
-      }  
-      else {
-        // Copia o cardapio para o novo arquivo
-        fwrite(Cardapio, sizeof(cardapio), 1, temp);
-      }
+        }
     }
-  
+
     // Fecha os arquivos
     fclose(arquivo);
     fclose(temp);
-  
+
     // Exclui o arquivo antigo
     remove("cardapios.data");
-  
+
     // Renomeia o novo arquivo para o nome do arquivo antigo
     rename("temp.data", "cardapios.data");
-  
+
     printf("||                                                                                                         ||\n");
     printf("||                                                                            			                       ||\n");
-    printf("||                                                                                                         ||\n");    
+    printf("||                                                                                                         ||\n");
     printf("||                                                                            			                       ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                            			                       ||\n");
