@@ -24,7 +24,8 @@ void modulo_plan_alimentar(void) {
                         break;
             case '3': 	tela_cardapio_nutricional();
                         break;
-
+            case '4':   visualizar_cardapio_paciente();
+                        break;
         } 		
     } while (opc != '0');
 }
@@ -45,6 +46,7 @@ char menu_plan_alimentar(){
     printf("||                               1 [Cálculo do IMC e  necessidades calóricas]                              ||\n");
     printf("||                               2 [Sugestão de Cardápios Personalizados para Objetivos de Peso]           ||\n");
     printf("||                               3 [Sugestão de Cardápios Baseados em Necessidades Nutricionais]           ||\n");
+    printf("||                               4 [Visualizar Cardapio selecinado]                                        ||\n");
     printf("||                               0 [Voltar]                                                                ||\n");
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
@@ -174,7 +176,7 @@ char tela_imc_cal(usuario *Usuario)
 
 char tela_cardapio_peso()
 {
-    FILE *arquivo = fopen("usuarios.data", "rb");
+    FILE *arquivo = fopen("usuarios.data", "rb+");
     // Verifica se o arquivo está aberto
     if (arquivo == NULL)
     {
@@ -219,6 +221,7 @@ char tela_cardapio_peso()
         buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
         usuario UsuarioLocal;
         cardapio CardapioLocal;
+        char buscar_cod[11];
       
         while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo))
         {
@@ -254,6 +257,40 @@ char tela_cardapio_peso()
                         imprimir_cardapio_tab(CardapioLocal);
                     }
                 }
+                printf("       Deseja selecionar um cardapio para o paciente? (s/n): ");
+                scanf(" %c", &opc); getchar();
+                if (opc == 's' || opc == 'S') 
+                {
+                  do 
+                  {
+                    printf("   DIGITE O CODIGO DO CARDÁPIO: ");
+                    fgets(buscar_cod, sizeof(buscar_cod), stdin); getchar();
+                    fseek(arquivoC, 0, SEEK_SET);  // Adicionado para reiniciar a posição do arquivo
+                    int encontrado = 0;
+                    while (fread(&CardapioLocal, sizeof(cardapio), 1, arquivoC))
+                    {
+                      if (strcmp(CardapioLocal.cod_cardapio, buscar_cod) == 0)
+                      {
+                        strcpy(UsuarioLocal.pac_card_cod, CardapioLocal.cod_cardapio);
+                        printf("\033[32m   Cardapio selecionado! \033[0m\n");
+                        encontrado = 1;
+                        // Move o ponteiro do arquivo para a posição do usuário atual
+                        fseek(arquivo, -sizeof(usuario), SEEK_CUR);
+                        // Escreve a estrutura do usuário de volta no arquivo
+                        fwrite(&UsuarioLocal, sizeof(usuario), 1, arquivo);
+                        break;
+                      }
+                    }
+                    if (encontrado) break;
+                    printf("   Cardápio não encontrado. Deseja continuar? (s/n): ");
+                    scanf(" %c", &opc); getchar();
+                    if (opc == 'n' || opc == 'N') 
+                    {
+                      printf("   Seleção cancelada.\n");
+                      break;
+                    }
+                  } while (strcmp(CardapioLocal.cod_cardapio, buscar_cod) != 0);
+                }
             }
         }
     } while (slc != 5 && slc != 4 && slc != 1 && slc != 2 && slc != 3);
@@ -275,7 +312,7 @@ char tela_cardapio_peso()
 
 char tela_cardapio_nutricional()
 {
-    FILE *arquivo = fopen("usuarios.data", "rb");
+    FILE *arquivo = fopen("usuarios.data", "rb+");
     // Verifica se o arquivo está aberto
     if (arquivo == NULL)
     {
@@ -292,6 +329,7 @@ char tela_cardapio_nutricional()
 
     char opc;
     char buscar_cpf[14];
+    char buscar_cod[11];
     system("clear||cls");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||                                                                                                         ||\n");
@@ -332,6 +370,128 @@ char tela_cardapio_nutricional()
                   imprimir_cardapio_tab(CardapioLocal);
                 }
             }
+            printf("       Deseja selecionar um cardapio para o paciente? (s/n): ");
+            scanf(" %c", &opc); getchar();
+            if (opc == 's' || opc == 'S') 
+            {
+              do 
+              {
+                printf("   DIGITE O CODIGO DO CARDÁPIO: ");
+                fgets(buscar_cod, sizeof(buscar_cod), stdin); getchar();
+                fseek(arquivoC, 0, SEEK_SET);  // Adicionado para reiniciar a posição do arquivo
+                int encontrado = 0;
+                while (fread(&CardapioLocal, sizeof(cardapio), 1, arquivoC))
+                {
+                  if (strcmp(CardapioLocal.cod_cardapio, buscar_cod) == 0)
+                  {
+                    strcpy(UsuarioLocal.pac_card_cod, CardapioLocal.cod_cardapio);
+                    printf("\033[32m   Cardapio selecionado! \033[0m\n");
+                    encontrado = 1;
+                    // Move o ponteiro do arquivo para a posição do usuário atual
+                    fseek(arquivo, -sizeof(usuario), SEEK_CUR);
+                    // Escreve a estrutura do usuário de volta no arquivo
+                    fwrite(&UsuarioLocal, sizeof(usuario), 1, arquivo);
+                    break;
+                  }
+                }
+                if (encontrado) break;
+                printf("   Cardápio não encontrado. Deseja continuar? (s/n): ");
+                scanf(" %c", &opc); getchar();
+                if (opc == 'n' || opc == 'N') 
+                {
+                  printf("   Seleção cancelada.\n");
+                  break;
+                }
+              } while (strcmp(CardapioLocal.cod_cardapio, buscar_cod) != 0);
+            }
+
+        }
+    }
+    fclose(arquivo);
+    fclose(arquivoC);
+    printf("||                                                                                                         ||\n");
+    printf("||    0 [Voltar]                                                                                           ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||Selecione a opção:\n");
+    scanf(" %c", &opc);
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF)
+        ;
+    return opc;
+}
+
+
+
+char visualizar_cardapio_paciente()
+{
+    FILE *arquivo = fopen("usuarios.data", "rb+");
+    // Verifica se o arquivo está aberto
+    if (arquivo == NULL)
+    {
+        printf("Erro ao abrir o arquivo!\n");
+        return 0;
+    }
+    FILE *arquivoC = fopen("cardapios.data", "rb");
+    // Verifica se o arquivo está aberto
+    if (arquivoC == NULL)
+    {
+        printf("Erro ao abrir o arquivo!\n");
+        return 0;
+    }
+
+    char opc;
+    char buscar_cpf[14];
+    char buscar_cod[11];
+    system("clear||cls");
+    printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     ==============================  VISUALIZAR CARDÁPIO DO PACIENTE   =============================     ||\n");
+    printf("||                                                                                                         ||\n");
+    printf("||     CPF DO PACIENTE: ");
+    fgets(buscar_cpf, sizeof(buscar_cpf), stdin);
+    buscar_cpf[strcspn(buscar_cpf, "\n")] = 0;
+    usuario UsuarioLocal;
+    cardapio CardapioLocal;
+
+    while (fread(&UsuarioLocal, sizeof(usuario), 1, arquivo))
+    {
+        if (strcmp(UsuarioLocal.cpf, buscar_cpf) == 0 && UsuarioLocal.estatos == 0)
+        {
+            printf("\n\033[32m       PACIENTE:\033[0m %s", UsuarioLocal.nome);
+          
+            while (fread(&CardapioLocal, sizeof(cardapio), 1, arquivoC))
+            {
+                if (strcmp(CardapioLocal.cod_cardapio, UsuarioLocal.pac_card_cod) == 0)
+                {
+                  printf("\n");
+                  printf("\033[32m   +----------------------+--------------------------------+---------------------------+------------------+\n");
+                  printf("   |   CODIGO DO CARDÁPIO |              NOME              |    OBJETIVO DO CARDÁPIO   |      CALORIAS    |\n");
+                  printf("   +----------------------+--------------------------------+---------------------------+------------------+ \033[0m\n");
+                  printf("   | \033[31m%-20s\033[0m | %-30s | %-25s | %-16.2f |\n", CardapioLocal.cod_cardapio, CardapioLocal.nome, 
+                    CardapioLocal.objetivo == 1 ? "Ganhar peso" : 
+                    CardapioLocal.objetivo == 2 ? "Perder peso" : 
+                    CardapioLocal.objetivo == 3 ? "Manter peso" : 
+                    CardapioLocal.objetivo == 4 ? "Ganhar massa muscular" : 
+                    "Objetivo inválido", 
+                    CardapioLocal.cal_cardapio);
+                  printf("   +----------------------+--------------------------------+---------------------------+------------------+\n");
+                  printf("\n    DIETA DO CARDÁPIO: \n");
+                  printf("   ========================================================================================================\n");
+                  char *dieta = CardapioLocal.dieta_cardapio;
+                  char *linha = strtok(dieta, "\n");
+
+                  while (linha != NULL) {
+                      printf("    %s%s\n", "", linha);  // Adiciona 6 espaços antes de cada linha
+                      linha = strtok(NULL, "\n");
+                  }
+                  printf("   ========================================================================================================\n");
+                }
+
+            }
+
         }
     }
     fclose(arquivo);

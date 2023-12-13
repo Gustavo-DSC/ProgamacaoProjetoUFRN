@@ -10,6 +10,7 @@ struct usuario {
   char ativ_fisica[100];
   int estatos;
   float imc;
+  char pac_card_cod[11];
   float nec_cal; 
 };
 
