@@ -486,12 +486,6 @@ char tela_atualizar_paciente(usuario *Usuario){
           }
           break;
         }
-        else if (Usuario->estatos == 1){
-          printf("\033[31m   PACIENTE INATIVO! \033[0m\n");
-        }
-        else{
-        printf("\033[31m   PACIENTE NÃO ENCONTRADO! \033[0m\n");
-        }
     }
     // Fecha o arquivo
     fclose(arquivo);
@@ -527,7 +521,7 @@ char tela_excluir_paciente(usuario *Usuario){
     printf("||   4 [Cancelar exclusão]                                                                                 ||\n");
     do{
       printf("\n");
-      printf("     ESCOLHA A OPÇÃO DE LISTAGEM: ");    
+      printf("     ESCOLHA A OPÇÃO DE EXCLUSÃO: ");    
       while (scanf("%d", &slc) != 1) {
         while ((slc = getchar()) != '\n' && slc != EOF);
         printf("     Entrada inválida. Por favor, insira um número: ");
