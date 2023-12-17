@@ -6,3 +6,5 @@ int valida_peso(float);
 int valida_altura(float);
 int valida_atividade_fisica(char *str);
 int valida_cpf(char *cpf);
+int calcula_idade(char* data_nascimento);
+int valida_data(char* data_nascimento);

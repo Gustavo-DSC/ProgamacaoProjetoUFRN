@@ -2,6 +2,7 @@
 struct usuario {
   char nome[100];
   char cpf[14];
+  char data_nascimento[11];
   int idade;
   char sexo[100];
   char email[100];
@@ -23,10 +24,10 @@ typedef struct Elemento {
 
 char menu_inf_usuario();
 void tela_buscar_paciente(usuario *Usuario);
-char tela_novo_usuario(usuario *Usuario);
-char tela_lista_pacientes();
-char tela_atualizar_paciente (usuario *Usuario);
-char tela_excluir_paciente (usuario *Usuario);
+void tela_novo_usuario(usuario *Usuario);
+void tela_lista_pacientes();
+void tela_atualizar_paciente (usuario *Usuario);
+void tela_excluir_paciente (usuario *Usuario);
 void modulo_usuario();
 void imprimir_usuario(usuario u);
 void imprimir_cab_tab();

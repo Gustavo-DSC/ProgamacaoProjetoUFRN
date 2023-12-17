@@ -6,6 +6,7 @@
 #include "acompanhamento.h"
 #include "usuario.h"
 #include "validacoes.h"
+#include "utilidades.h"
 
 
 void modulo_acompanhamento(void) {
@@ -51,25 +52,25 @@ char menu_acompanhamento (){
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
     printf("||Selecione a opção:\n");
-    scanf(" %c", &opc); getchar();
+    opc = digite_opcao();
     return opc; 
 }
 
 
 
-char tela_avaliacao_paciente(){
+void tela_avaliacao_paciente(){
     
     FILE *arquivo = fopen("usuarios.data", "rb+");
     // Verifica se o arquivo está aberto
     if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo!\n");
-        return 0;
+        tela_erro();
+        return;
     }
     FILE *arquivo_acompanhamento  = fopen("avaliacao.data", "ab+");
     // Verifica se o arquivo está aberto
     if (arquivo == NULL) {
-        printf("Erro ao abrir o arquivo!\n");
-        return 0;
+        tela_erro();
+        return;
     }
 
   
@@ -174,28 +175,24 @@ char tela_avaliacao_paciente(){
     fclose(arquivo);  
     fclose(arquivo_acompanhamento);
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||    0 [Voltar]                                                                                           ||\n");
+    printf("||       <<< APERTE ENTER VOLTAR >>                                                                        ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
-    return opc;
+    getchar();
 }
 
-char tela_lista_avaliacao_paciente(){
+void tela_lista_avaliacao_paciente(){
   FILE *arquivo = fopen("usuarios.data", "rb");
   // Verifica se o arquivo está aberto
   if (arquivo == NULL) {
-      printf("Erro ao abrir o arquivo!\n");
-      return 0;
+      tela_erro();
+      return;
   }
   FILE *arquivo_acompanhamento  = fopen("avaliacao.data", "rb");
   // Verifica se o arquivo está aberto
   if (arquivo == NULL) {
-      printf("Erro ao abrir o arquivo!\n");
-      return 0;
+      tela_erro();
+      return;
   }
 
 
@@ -240,39 +237,35 @@ char tela_lista_avaliacao_paciente(){
         }
     }
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");    
-    printf("||    0 [Voltar]                                                                                           ||\n");
+    printf("||       <<< APERTE ENTER VOLTAR >>                                                                        ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
-    return opc;
+    getchar();
 }
 
 
-char tela_progreso_paciente()
+void tela_progreso_paciente()
 {
     FILE *arquivo = fopen("usuarios.data", "rb");
     // Verifica se o arquivo está aberto
     if (arquivo == NULL)
     {
-        printf("Erro ao abrir o arquivo!\n");
-        return 0;
+        tela_erro();
+        return;
     }
     FILE *arquivo_acompanhamento = fopen("avaliacao.data", "rb");
     // Verifica se o arquivo está aberto
     if (arquivo == NULL)
     {
-        printf("Erro ao abrir o arquivo!\n");
-        return 0;
+        tela_erro();
+        return;
     }
     // Aloca memória para o array de pesos
     double *pesos = (double *)malloc(10 * sizeof(double));
     if (pesos == NULL)
     {
         printf("Erro ao alocar memória!\n");
-        return 0;
+        return;
     }
 
     int count = 0;
@@ -336,19 +329,16 @@ char tela_progreso_paciente()
             printf("   +------------------------------------------------------------------------------------------------------+\n");
             // Libera a memória alocada para o array de pesos
             free(pesos);
+            fclose(arquivo_acompanhamento);
             // Sai do loop
             break;
         }
     }
     printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||                                                                                                         ||\n");
-    printf("||    0 [Voltar]                                                                                           ||\n");
+    printf("||       <<< APERTE ENTER VOLTAR >>                                                                        ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
-    return opc;
+    getchar();
 }
 
 

@@ -1,8 +1,8 @@
 
 
 char menu_plan_alimentar();
-char tela_imc_cal ();
-char tela_cardapio_nutricional();
-char tela_cardapio_peso();
+void tela_imc_cal ();
+void tela_cardapio_nutricional();
+void tela_cardapio_peso();
 void modulo_plan_alimentar();
-char visualizar_cardapio_paciente();
+void visualizar_cardapio_paciente();

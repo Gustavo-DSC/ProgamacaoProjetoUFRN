@@ -4,6 +4,8 @@
 #include <string.h>
 #include <unistd.h>
 #include "validacoes.h"
+#include <time.h>
+
 
 int valida_nome(char *str) {
     for (int i = 0; str[i]; i++) {
@@ -25,6 +27,36 @@ int valida_idade(int idade) {
   return 0;
 }
 
+int valida_data(char* data_nascimento) {
+    int dia, mes, ano;
+    sscanf(data_nascimento, "%d/%d/%d", &dia, &mes, &ano);
+
+    if (ano < 1900 || ano > 2100) return 0;
+    if (mes < 1 || mes > 12) return 0;
+    if (dia < 1 || dia > 31) return 0;
+    if ((mes == 4 || mes == 6 || mes == 9 || mes == 11) && dia == 31) return 0;
+    if (mes == 2) {
+        int bissexto = (ano % 4 == 0 && ano % 100 != 0) || (ano % 400 == 0);
+        if (dia > 29 || (dia == 29 && !bissexto)) return 0;
+    }
+
+    return 1;
+}
+
+int calcula_idade(char* data_nascimento) {
+    int dia, mes, ano;
+    sscanf(data_nascimento, "%d/%d/%d", &dia, &mes, &ano);
+
+    time_t agora = time(NULL);
+    struct tm *hoje = localtime(&agora);
+
+    int idade = hoje->tm_year + 1900 - ano;
+    if (hoje->tm_mon < mes - 1 || (hoje->tm_mon == mes - 1 && hoje->tm_mday < dia)) {
+        idade--;
+    }
+
+    return idade;
+}
 
 int valida_sexo(char *str) {
     char *espaco = strchr(str, '\n');  // procura por '\n' na string

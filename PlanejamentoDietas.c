@@ -17,6 +17,8 @@
 #include "acompanhamento.h"
 #include "sobre.h"
 #include "cardapios.h"
+#include "utilidades.h"
+
 
 char menu_inicial();
 
@@ -67,10 +69,6 @@ char menu_inicial (){
     printf("||                                                                                                         ||\n");
     printf("||                                                                                                         ||\n");
     printf("MWMWMWMWMWMWMMWMWMWMWMMWMWMWMWMMWMWMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMMWMWMWMWMWMWMMWMWMWMMWMWMWMWMWMWMWMWMMWM\n");
-    printf("||Selecione a opção:\n");
-    scanf(" %c", &opc);
+    opc = digite_opcao();
     return opc;
 }
-
-
-
